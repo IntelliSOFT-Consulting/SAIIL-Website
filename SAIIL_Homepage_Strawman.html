@@ -329,6 +329,129 @@
   }
   @media (max-width:900px){ .sandbox-grid{grid-template-columns:1fr;} }
 
+  /* ===== SANDBOX GALLERY (real ITB screenshots) ===== */
+  .sandbox-gallery{
+    margin-top:80px;
+    padding-top:56px;
+    border-top:1px solid rgba(255,255,255,0.1);
+  }
+  .sandbox-gallery-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:16px;flex-wrap:wrap;margin-bottom:28px;
+  }
+  .sandbox-gallery-head h3{
+    font-family:'Fraunces',serif;font-weight:600;font-size:22px;color:#fff;
+  }
+  .sandbox-gallery-head p{
+    font-size:14px;color:rgba(255,255,255,0.55);max-width:380px;
+  }
+  .gallery-scroll{
+    display:flex;gap:22px;overflow-x:auto;padding-bottom:16px;
+    scroll-snap-type:x proximity;
+    margin:0 -4px;padding-left:4px;padding-right:4px;
+  }
+  .gallery-scroll::-webkit-scrollbar{height:7px;}
+  .gallery-scroll::-webkit-scrollbar-track{background:rgba(255,255,255,0.06);border-radius:4px;}
+  .gallery-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.22);border-radius:4px;}
+  .gallery-card{
+    flex:0 0 auto;width:340px;
+    scroll-snap-align:start;
+    background:var(--white);
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 24px 48px rgba(0,0,0,0.28);
+  }
+  .gallery-chrome{
+    display:flex;align-items:center;gap:6px;
+    padding:10px 12px;background:var(--paper-2);
+    border-bottom:1px solid var(--line);
+  }
+  .gallery-chrome span{width:8px;height:8px;border-radius:50%;background:rgba(11,45,70,0.16);}
+  .gallery-shot{
+    width:100%;height:210px;overflow:hidden;background:var(--paper);
+    cursor:zoom-in;position:relative;
+  }
+  .gallery-shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .35s ease;}
+  .gallery-shot:hover img,
+  .gallery-shot:focus-visible img{transform:scale(1.045);}
+  .gallery-shot::after{
+    content:"⤢";
+    position:absolute;top:10px;right:10px;
+    width:28px;height:28px;border-radius:50%;
+    background:rgba(11,45,70,0.72);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;opacity:0;transition:opacity .2s ease;
+    pointer-events:none;
+  }
+  .gallery-shot:hover::after,
+  .gallery-shot:focus-visible::after{opacity:1;}
+  .gallery-shot:focus-visible{outline:2px solid var(--amber);outline-offset:-2px;}
+  .gallery-cap{padding:15px 17px 19px;}
+  .gallery-cap .step{
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--teal);
+    text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px;display:block;
+  }
+  .gallery-cap p{font-size:13px;color:var(--slate);line-height:1.55;}
+
+  /* ===== LIGHTBOX ===== */
+  .lightbox{
+    position:fixed;inset:0;z-index:200;
+    background:rgba(5,20,32,0.92);
+    display:none;
+    align-items:center;justify-content:center;
+    padding:64px 24px;
+    opacity:0;
+    transition:opacity .2s ease;
+  }
+  .lightbox.is-open{display:flex;opacity:1;}
+  .lightbox-frame{
+    position:relative;
+    max-width:min(1000px, 92vw);
+    max-height:calc(100vh - 128px);
+    display:flex;flex-direction:column;
+    background:var(--white);
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 30px 70px rgba(0,0,0,0.5);
+    transform:scale(0.96);
+    transition:transform .2s ease;
+  }
+  .lightbox.is-open .lightbox-frame{transform:scale(1);}
+  .lightbox-img-wrap{overflow:auto;background:var(--paper-2);display:flex;justify-content:center;}
+  .lightbox-img-wrap img{max-width:100%;height:auto;display:block;}
+  .lightbox-cap{
+    padding:14px 20px;
+    border-top:1px solid var(--line);
+    display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  }
+  .lightbox-cap .step{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--teal);
+    text-transform:uppercase;letter-spacing:0.08em;flex-shrink:0;
+  }
+  .lightbox-cap p{font-size:13.5px;color:var(--slate);}
+  .lightbox-close{
+    position:absolute;top:14px;right:14px;z-index:2;
+    width:36px;height:36px;border-radius:50%;
+    background:rgba(11,45,70,0.82);color:#fff;border:none;
+    font-size:20px;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .lightbox-close:hover{background:var(--ink);}
+  .lightbox-nav{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:44px;height:44px;border-radius:50%;
+    background:rgba(11,45,70,0.72);color:#fff;border:none;
+    font-size:18px;cursor:pointer;z-index:2;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .lightbox-nav:hover{background:var(--ink);}
+  .lightbox-prev{left:18px;}
+  .lightbox-next{right:18px;}
+  @media (max-width:760px){
+    .lightbox{padding:48px 12px;}
+    .lightbox-nav{width:38px;height:38px;font-size:16px;}
+  }
+
   /* ===== AI LAYER ===== */
   .ai-layer{background:var(--paper-2);}
   .ai-grid{
@@ -758,6 +881,55 @@
         </div>
       </div>
     </div>
+
+    <div class="sandbox-gallery">
+      <div class="sandbox-gallery-head">
+        <h3>Inside a real conformance run</h3>
+        <p>Screenshots from the live Interoperability Test Bed &mdash; not mockups.</p>
+      </div>
+      <div class="gallery-scroll">
+        <div class="gallery-card">
+          <div class="gallery-chrome"><span></span><span></span><span></span></div>
+          <div class="gallery-shot" onclick="openLightbox(0)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openLightbox(0)" aria-label="Enlarge screenshot: Sign in"><img src="Resources/itb-01-welcome.png" alt="SAIIL Interoperability Test Bed sign-in screen"></div>
+          <div class="gallery-cap">
+            <span class="step">01 &middot; Sign in</span>
+            <p>Implementers log into the Test Bed with their organisation account before submitting a system for validation.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-chrome"><span></span><span></span><span></span></div>
+          <div class="gallery-shot" onclick="openLightbox(1)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openLightbox(1)" aria-label="Enlarge screenshot: Run the suite"><img src="Resources/itb-02-suite.png" alt="SAIIL IPS Payload Validation Suite test list"></div>
+          <div class="gallery-cap">
+            <span class="step">02 &middot; Run the suite</span>
+            <p>The SAIIL (IPS) Payload Validation Suite checks Patient, Condition, Immunization, CarePlan and more against the national profile.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-chrome"><span></span><span></span><span></span></div>
+          <div class="gallery-shot" onclick="openLightbox(2)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openLightbox(2)" aria-label="Enlarge screenshot: Trace the session"><img src="Resources/itb-03-session-trace.png" alt="Sequence diagram tracing a test session between client, HAPI server and test engine"></div>
+          <div class="gallery-cap">
+            <span class="step">03 &middot; Trace the session</span>
+            <p>Every request between the client system, the reference HAPI FHIR server, and the test engine is logged step by step.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-chrome"><span></span><span></span><span></span></div>
+          <div class="gallery-shot" onclick="openLightbox(3)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openLightbox(3)" aria-label="Enlarge screenshot: Get a report"><img src="Resources/itb-04-report.png" alt="Downloadable test case report showing a validation failure with diagnostics"></div>
+          <div class="gallery-cap">
+            <span class="step">04 &middot; Get a report</span>
+            <p>Failures come back with the exact FHIR path, error code, and diagnostics &mdash; something implementers can act on, not just a red X.</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-chrome"><span></span><span></span><span></span></div>
+          <div class="gallery-shot" onclick="openLightbox(4)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openLightbox(4)" aria-label="Enlarge screenshot: Track conformance"><img src="Resources/itb-05-dashboard.png" alt="Dashboard tracking pass rates across specifications"></div>
+          <div class="gallery-cap">
+            <span class="step">05 &middot; Track conformance</span>
+            <p>Pass rates roll up by specification, so ministries and implementers can see readiness at a glance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -847,6 +1019,76 @@
     </div>
   </div>
 </footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation();stepLightbox(-1)" aria-label="Previous screenshot">&larr;</button>
+  <div class="lightbox-frame" onclick="event.stopPropagation()">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close preview">&times;</button>
+    <div class="lightbox-img-wrap">
+      <img id="lightbox-img" src="" alt="">
+    </div>
+    <div class="lightbox-cap">
+      <span class="step" id="lightbox-step"></span>
+      <p id="lightbox-desc"></p>
+    </div>
+  </div>
+  <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation();stepLightbox(1)" aria-label="Next screenshot">&rarr;</button>
+</div>
+
+<script>
+  var galleryItems = [
+    { src:"Resources/itb-01-welcome.png", step:"01 · Sign in", desc:"Implementers log into the Test Bed with their organisation account before submitting a system for validation.", alt:"SAIIL Interoperability Test Bed sign-in screen" },
+    { src:"Resources/itb-02-suite.png", step:"02 · Run the suite", desc:"The SAIIL (IPS) Payload Validation Suite checks Patient, Condition, Immunization, CarePlan and more against the national profile.", alt:"SAIIL IPS Payload Validation Suite test list" },
+    { src:"Resources/itb-03-session-trace.png", step:"03 · Trace the session", desc:"Every request between the client system, the reference HAPI FHIR server, and the test engine is logged step by step.", alt:"Sequence diagram tracing a test session between client, HAPI server and test engine" },
+    { src:"Resources/itb-04-report.png", step:"04 · Get a report", desc:"Failures come back with the exact FHIR path, error code, and diagnostics — something implementers can act on, not just a red X.", alt:"Downloadable test case report showing a validation failure with diagnostics" },
+    { src:"Resources/itb-05-dashboard.png", step:"05 · Track conformance", desc:"Pass rates roll up by specification, so ministries and implementers can see readiness at a glance.", alt:"Dashboard tracking pass rates across specifications" }
+  ];
+  var lightboxIndex = 0;
+  var lastFocusedEl = null;
+
+  function renderLightbox(){
+    var item = galleryItems[lightboxIndex];
+    var img = document.getElementById('lightbox-img');
+    img.src = item.src;
+    img.alt = item.alt;
+    document.getElementById('lightbox-step').textContent = item.step;
+    document.getElementById('lightbox-desc').textContent = item.desc;
+  }
+
+  function openLightbox(i){
+    lightboxIndex = i;
+    lastFocusedEl = document.activeElement;
+    renderLightbox();
+    var lb = document.getElementById('lightbox');
+    lb.classList.add('is-open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    lb.querySelector('.lightbox-close').focus();
+  }
+
+  function closeLightbox(){
+    var lb = document.getElementById('lightbox');
+    lb.classList.remove('is-open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if(lastFocusedEl) lastFocusedEl.focus();
+  }
+
+  function stepLightbox(delta){
+    lightboxIndex = (lightboxIndex + delta + galleryItems.length) % galleryItems.length;
+    renderLightbox();
+  }
+
+  document.getElementById('lightbox').addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', function(e){
+    var lb = document.getElementById('lightbox');
+    if(!lb.classList.contains('is-open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowLeft') stepLightbox(-1);
+    if(e.key === 'ArrowRight') stepLightbox(1);
+  });
+</script>
 
 </body>
 </html>
