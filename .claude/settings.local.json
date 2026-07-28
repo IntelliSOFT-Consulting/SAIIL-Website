@@ -15,7 +15,17 @@
       "Bash(python3 -m venv /private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/venv)",
       "Bash(/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/venv/bin/pip install *)",
       "Bash(/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/venv/bin/python3 -c ' *)",
-      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --screenshot=/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/saiil_v3.png --window-size=1400,5600 --virtual-time-budget=4000 \"file://$\\(pwd\\)/SAIIL_Homepage_Strawman.html\")"
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --screenshot=/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/saiil_v3.png --window-size=1400,5600 --virtual-time-budget=4000 \"file://$\\(pwd\\)/SAIIL_Homepage_Strawman.html\")",
+      "Bash(cp \"Screenshot 2026-07-28 at 09.57.28.png\" \"itb-01-welcome.png\")",
+      "Bash(cp \"Screenshot 2026-07-14 at 19.57.59.png\" \"itb-02-suite.png\")",
+      "Bash(cp \"Screenshot 2026-07-28 at 10.00.42.png\" \"itb-03-session-trace.png\")",
+      "Bash(cp \"Screenshot 2026-07-28 at 10.01.12.png\" \"itb-04-report.png\")",
+      "Bash(cp \"Screenshot 2026-07-28 at 10.03.03.png\" \"itb-05-dashboard.png\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --screenshot=/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/saiil_v4.png --window-size=1400,6300 --virtual-time-budget=4000 \"file://$\\(pwd\\)/SAIIL_Homepage_Strawman.html\")",
+      "Bash(cp SAIIL_Homepage_Strawman.html /private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/lightbox_test.html)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --screenshot=/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/lightbox_open.png --window-size=1400,1000 --virtual-time-budget=3000 \"file:///private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/lightbox_test.html\")",
+      "Bash(cp SAIIL_Homepage_Strawman.html _lightbox_test_tmp.html)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --screenshot=/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/lightbox_open2.png --window-size=1400,1000 --virtual-time-budget=3000 \"file://$\\(pwd\\)/_lightbox_test_tmp.html\")"
     ]
   }
 }
