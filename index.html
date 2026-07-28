@@ -542,6 +542,15 @@
   .partner-col .ph{
     font-size:13.5px;color:var(--slate);
   }
+  .gov-logos{display:flex;flex-direction:column;gap:16px;}
+  .gov-logo{display:flex;align-items:center;gap:11px;}
+  .gov-logo img{display:block;object-fit:contain;width:auto;}
+  .gov-logo-kenya img{height:22px;}
+  .gov-logo-rwanda img{height:44px;}
+  .gov-logo span{
+    font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--slate-l);
+    letter-spacing:0.04em;text-transform:uppercase;
+  }
   @media (max-width:900px){ .partner-cols{grid-template-columns:1fr 1fr;} }
 
   /* ===== CTA BAND ===== */
@@ -614,16 +623,16 @@
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
-          <div class="num">[X]</div>
+          <div class="num">3</div>
           <div class="lbl">Countries engaged</div>
         </div>
         <div class="hero-stat">
-          <div class="num">[X]</div>
+          <div class="num">4+</div>
           <div class="lbl">Systems tested</div>
         </div>
         <div class="hero-stat">
-          <div class="num">[X]</div>
-          <div class="lbl">FHIR guides published</div>
+          <div class="num">8+</div>
+          <div class="lbl">FHIR Implementation Guides published</div>
         </div>
       </div>
     </div>
@@ -684,15 +693,15 @@
     <p class="problem-quote">Africa carries <span>24% of the global disease burden</span> but a fraction of the world&rsquo;s accessible, structured health data. Not because the data doesn&rsquo;t exist &mdash; but because the systems holding it can&rsquo;t talk to each other.</p>
     <div class="stat-grid">
       <div class="stat-card">
-        <div class="num">[X]</div>
+        <div class="num">4+</div>
         <div class="lbl">Health systems tested for FHIR conformance</div>
       </div>
       <div class="stat-card">
-        <div class="num">[X]</div>
+        <div class="num">8+</div>
         <div class="lbl">National Implementation Guides published</div>
       </div>
       <div class="stat-card">
-        <div class="num">[X]</div>
+        <div class="num">10</div>
         <div class="lbl">Technical staff trained through SAIIL cohorts</div>
       </div>
     </div>
@@ -722,7 +731,7 @@
           <h3>Tooling</h3>
           <span class="t-tag">Shared infrastructure</span>
         </div>
-        <p>Every team gets access to pre-configured, open-source interoperability infrastructure &mdash; HAPI FHIR, the EC Interoperability Test Bed, and FSH/SUSHI authoring environments &mdash; so no one starts from zero.</p>
+        <p>Every team gets access to pre-configured, open-source interoperability infrastructure &mdash; HAPI FHIR, the SAIIL Test Bed, and FSH/SUSHI authoring environments &mdash; so no one starts from zero.</p>
       </div>
       <div class="t-row">
         <div class="t-num">03<b>T</b></div>
@@ -730,7 +739,7 @@
           <h3>Testing</h3>
           <span class="t-tag">Trust, but verify</span>
         </div>
-        <p>Systems are tested &mdash; automatically and repeatedly &mdash; against national and international FHIR standards using the ITB sandbox. Conformance isn&rsquo;t declared. It&rsquo;s demonstrated.</p>
+        <p>Systems are tested &mdash; automatically and repeatedly &mdash; against national and international FHIR standards using the SAIIL sandbox. Conformance isn&rsquo;t declared. It&rsquo;s demonstrated.</p>
       </div>
       <div class="t-row">
         <div class="t-num">04<b>T</b></div>
@@ -812,7 +821,7 @@
           </span>
           <div>
             <h4>Smart mapping</h4>
-            <p>AI proposes field-to-profile mappings from legacy exports and HL7v2 feeds, so implementers start from a draft instead of a blank FSH file.</p>
+            <p>AI analyzes existing FHIR R4 resources and implementation requirements to recommend mappings to profiles, extensions, and value sets, helping implementers accelerate FSH-based implementation guide development.</p>
           </div>
         </li>
         <li class="ai-item">
@@ -949,7 +958,15 @@
     <div class="partner-cols">
       <div class="partner-col">
         <span class="lbl">Governments</span>
-        <div class="ph">[Ministry of Health logos]</div>
+        <div class="gov-logos">
+          <div class="gov-logo gov-logo-kenya">
+            <img src="Partners/kenya-moh-logo.png" alt="Ministry of Health, Republic of Kenya">
+          </div>
+          <div class="gov-logo gov-logo-rwanda">
+            <img src="Partners/rwanda-coat-of-arms.png" alt="Republic of Rwanda coat of arms">
+            <span>Ministry of Health, Rwanda</span>
+          </div>
+        </div>
       </div>
       <div class="partner-col">
         <span class="lbl">Implementing partners</span>
@@ -957,7 +974,7 @@
       </div>
       <div class="partner-col">
         <span class="lbl">Standards bodies</span>
-        <div class="ph">[HL7 / IHE / HELINA]</div>
+        <div class="ph">[HL7]</div>
       </div>
       <div class="partner-col">
         <span class="lbl">Funders</span>
@@ -1014,7 +1031,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 SAIIL. Strawman draft &mdash; not for public release.</span>
+      <span>&copy; 2026 SAIIL</span>
       <span class="mono">v0.1</span>
     </div>
   </div>

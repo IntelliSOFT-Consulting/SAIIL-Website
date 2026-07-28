@@ -25,7 +25,14 @@
       "Bash(cp SAIIL_Homepage_Strawman.html /private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/lightbox_test.html)",
       "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --screenshot=/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/lightbox_open.png --window-size=1400,1000 --virtual-time-budget=3000 \"file:///private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/lightbox_test.html\")",
       "Bash(cp SAIIL_Homepage_Strawman.html _lightbox_test_tmp.html)",
-      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --screenshot=/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/lightbox_open2.png --window-size=1400,1000 --virtual-time-budget=3000 \"file://$\\(pwd\\)/_lightbox_test_tmp.html\")"
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --screenshot=/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/lightbox_open2.png --window-size=1400,1000 --virtual-time-budget=3000 \"file://$\\(pwd\\)/_lightbox_test_tmp.html\")",
+      "WebSearch",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "WebFetch(domain:moh.gov.rw)",
+      "Bash(mkdir -p Partners)",
+      "Bash(curl -sL \"https://upload.wikimedia.org/wikipedia/commons/9/92/KenyaMinHealth.png\" -o Partners/kenya-moh-logo.png)",
+      "Bash(curl -sL \"https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Coat_of_arms_of_Rwanda.svg/500px-Coat_of_arms_of_Rwanda.svg.png\" -o Partners/rwanda-coat-of-arms.png)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --screenshot=/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/partners_check.png --window-size=1400,7200 --virtual-time-budget=4000 \"file://$\\(pwd\\)/index.html\")"
     ]
   }
 }
