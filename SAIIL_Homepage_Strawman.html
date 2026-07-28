@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAIIL — Standards, AI &amp; Interoperability Lab</title>
+<meta name="description" content="SAIIL helps African health systems adopt FHIR-based interoperability, validated through AI-assisted testing. Making interoperability in health, work intelligently.">
+<link rel="icon" type="image/png" href="saiil-favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B2D46;
+    --ink-2:#0F3B5C;
+    --teal:#0F6E64;
+    --teal-l:#E1F0ED;
+    --green:#4A7C3C;
+    --green-l:#EAF3E1;
+    --amber:#E2A33B;
+    --amber-d:#8A5A16;
+    --paper:#F6F3EC;
+    --paper-2:#EFEAE0;
+    --slate:#5B6B73;
+    --slate-l:#8C9AA1;
+    --white:#FFFFFF;
+    --line:rgba(11,45,70,0.12);
+    --line-light:rgba(255,255,255,0.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'IBM Plex Sans',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.01em;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--teal);
+    font-weight:500;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  button, .btn{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    border:none;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border-radius:3px;
+    padding:13px 24px;
+    transition:transform .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn:focus-visible{outline:2px solid var(--amber);outline-offset:3px;}
+  .btn-primary{background:var(--amber);color:#2E1B00;}
+  .btn-primary:hover{transform:translateY(-1px);background:#EDAE49;}
+  .btn-outline{background:transparent;color:var(--white);border:1px solid var(--line-light);}
+  .btn-outline:hover{border-color:rgba(255,255,255,0.4);}
+  .btn-dark{background:var(--ink);color:var(--white);}
+  .btn-dark:hover{background:var(--ink-2);}
+
+  /* ===== NAV ===== */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,45,70,0.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-light);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .logo{display:flex;align-items:center;gap:11px;color:var(--white);text-decoration:none;}
+  .logo-mark-img{height:46px;width:auto;flex-shrink:0;display:block;}
+  .logo-word{font-family:'Fraunces',serif;font-weight:700;font-size:21px;letter-spacing:0.01em;}
+  .navlinks{display:flex;gap:36px;list-style:none;}
+  .navlinks a{
+    color:rgba(255,255,255,0.75);
+    text-decoration:none;
+    font-size:14.5px;
+    font-weight:500;
+    transition:color .15s ease;
+  }
+  .navlinks a:hover{color:var(--white);}
+  .nav-cta{display:flex;align-items:center;gap:18px;}
+  @media (max-width:900px){ .navlinks{display:none;} }
+
+  /* ===== HERO ===== */
+  .hero{
+    background:var(--ink);
+    color:var(--white);
+    padding:96px 0 88px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:#7FD9C9;
+    font-weight:500;
+    margin-bottom:22px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .hero-eyebrow::before{
+    content:"";width:7px;height:7px;border-radius:50%;background:var(--amber);
+    box-shadow:0 0 0 3px rgba(226,163,59,0.25);
+  }
+  .hero h1{
+    font-size:52px;
+    line-height:1.06;
+    color:var(--white);
+    margin-bottom:24px;
+    max-width:560px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:#7FD9C9;
+  }
+  .hero-tagline{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:20px;
+    color:#7FD9C9;
+    max-width:480px;
+    margin-bottom:18px;
+    line-height:1.4;
+  }
+  .hero p.lead{
+    font-size:18px;
+    color:rgba(255,255,255,0.78);
+    max-width:490px;
+    margin-bottom:36px;
+    line-height:1.6;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;}
+  .hero-stats{
+    display:flex;gap:40px;
+    border-top:1px solid var(--line-light);
+    padding-top:28px;
+    max-width:520px;
+  }
+  .hero-stat .num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:26px;font-weight:600;color:var(--white);
+    line-height:1;
+  }
+  .hero-stat .lbl{
+    font-size:12.5px;color:rgba(255,255,255,0.55);
+    margin-top:6px;
+  }
+
+  /* ===== SIGNATURE: node network SVG ===== */
+  .hero-visual{position:relative;height:440px;}
+  .hero-visual svg{width:100%;height:100%;}
+  .node-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    fill:rgba(255,255,255,0.55);
+    letter-spacing:0.03em;
+  }
+  .node-circle{fill:var(--ink);}
+  .node-ring{
+    fill:none;stroke-width:1.5;
+  }
+  .node-dot{opacity:0;animation:nodeFadeIn .6s ease forwards;}
+  .link-path{
+    stroke-width:1.4;
+    fill:none;
+    stroke-dasharray:220;
+    stroke-dashoffset:220;
+    animation:drawLine 1s ease forwards;
+    opacity:0.85;
+  }
+  @keyframes drawLine{ to{stroke-dashoffset:0;} }
+  @keyframes nodeFadeIn{ to{opacity:1;} }
+  @media (prefers-reduced-motion: reduce){
+    .link-path{animation:none;stroke-dashoffset:0;}
+    .node-dot{animation:none;opacity:1;}
+  }
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-visual{height:280px;order:-1;}
+    .hero h1{font-size:38px;}
+  }
+
+  /* ===== SECTION HEADERS ===== */
+  .section{padding:96px 0;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{font-size:34px;color:var(--ink);margin:14px 0 16px;line-height:1.15;}
+  .section-head p{font-size:16.5px;color:var(--slate);line-height:1.65;}
+
+  /* ===== PROBLEM / STATS ===== */
+  .problem{background:var(--paper);}
+  .problem-quote{
+    font-family:'Fraunces',serif;
+    font-size:27px;
+    font-weight:500;
+    line-height:1.42;
+    color:var(--ink);
+    max-width:820px;
+    margin-bottom:64px;
+  }
+  .problem-quote span{color:var(--teal);}
+  .stat-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .stat-card{
+    background:var(--white);
+    padding:32px 28px;
+  }
+  .stat-card .num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:38px;font-weight:600;color:var(--ink);
+    line-height:1;
+  }
+  .stat-card .lbl{
+    font-size:13.5px;color:var(--slate);margin-top:10px;
+  }
+  @media (max-width:760px){ .stat-grid{grid-template-columns:1fr;} }
+
+  /* ===== 4Ts ===== */
+  .fourTs{background:var(--white);}
+  .t-sequence{
+    display:flex;
+    flex-direction:column;
+    border-top:1px solid var(--line);
+  }
+  .t-row{
+    display:grid;
+    grid-template-columns:100px 220px 1fr;
+    gap:32px;
+    align-items:start;
+    padding:36px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .t-row .t-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:15px;
+    color:var(--slate-l);
+    padding-top:4px;
+  }
+  .t-row .t-num b{
+    display:block;
+    font-size:30px;
+    color:var(--teal);
+    font-weight:600;
+  }
+  .t-row h3{font-size:22px;color:var(--ink);}
+  .t-row .t-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--teal);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    margin-top:6px;
+    display:block;
+  }
+  .t-row p{color:var(--slate);font-size:15px;max-width:560px;}
+  @media (max-width:760px){
+    .t-row{grid-template-columns:56px 1fr;grid-template-rows:auto auto;}
+    .t-row .t-num b{font-size:22px;}
+  }
+
+  /* ===== SANDBOX ===== */
+  .sandbox{background:var(--ink);color:var(--white);}
+  .sandbox .section-head p{color:rgba(255,255,255,0.68);}
+  .sandbox .eyebrow{color:#7FD9C9;}
+  .sandbox-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .terminal{
+    background:#08202F;
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .terminal-head{
+    display:flex;gap:7px;
+    padding:14px 16px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .terminal-head span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.18);}
+  .terminal-body{
+    padding:22px 20px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    line-height:1.85;
+  }
+  .t-comment{color:rgba(255,255,255,0.38);}
+  .t-key{color:#7FD9C9;}
+  .t-str{color:#E2A33B;}
+  .t-pass{color:#8FD08A;font-weight:600;}
+  .t-fail{color:#E88B7D;font-weight:600;}
+  .sandbox-list{list-style:none;display:flex;flex-direction:column;gap:18px;margin-top:28px;}
+  .sandbox-list li{
+    display:flex;gap:14px;
+    font-size:15px;color:rgba(255,255,255,0.85);
+    padding-bottom:18px;
+    border-bottom:1px solid rgba(255,255,255,0.09);
+  }
+  .sandbox-list li:last-child{border-bottom:none;}
+  .sandbox-list .chk{
+    font-family:'IBM Plex Mono',monospace;
+    color:#7FD9C9;flex-shrink:0;
+  }
+  @media (max-width:900px){ .sandbox-grid{grid-template-columns:1fr;} }
+
+  /* ===== AI LAYER ===== */
+  .ai-layer{background:var(--paper-2);}
+  .ai-grid{
+    display:grid;
+    grid-template-columns:0.95fr 1.05fr;
+    gap:56px;
+    align-items:center;
+  }
+  .ai-panel{
+    background:var(--ink);
+    border-radius:6px;
+    padding:26px;
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--line-light);
+  }
+  .ai-panel::before{
+    content:"AI LAYER";
+    position:absolute;
+    top:16px;left:22px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.12em;
+    color:rgba(255,255,255,0.35);
+  }
+  .ai-panel svg{width:100%;height:auto;display:block;}
+  .ai-mesh{stroke:rgba(255,255,255,0.08);stroke-width:1;}
+  .ai-node{fill:var(--ink);stroke-width:1.3;}
+  .ai-node-active{animation:aiPulseGlow 2.4s ease-in-out infinite;}
+  .ai-pulse-path{
+    fill:none;stroke-width:1.6;
+    stroke-dasharray:1;stroke-dashoffset:1;
+    animation:aiDraw 1.8s ease forwards;
+    opacity:0.9;
+  }
+  @keyframes aiDraw{ to{stroke-dashoffset:0;} }
+  @keyframes aiPulseGlow{
+    0%,100%{filter:drop-shadow(0 0 0 rgba(226,163,59,0));}
+    50%{filter:drop-shadow(0 0 6px rgba(226,163,59,0.65));}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ai-pulse-path{animation:none;stroke-dashoffset:0;}
+    .ai-node-active{animation:none;}
+  }
+  .ai-list{list-style:none;display:flex;flex-direction:column;gap:26px;}
+  .ai-item{display:flex;gap:16px;align-items:flex-start;}
+  .ai-ico{
+    width:38px;height:38px;flex-shrink:0;border-radius:8px;
+    background:var(--teal-l);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .ai-ico svg{width:19px;height:19px;}
+  .ai-item h4{font-family:'Fraunces',serif;font-size:16.5px;font-weight:600;color:var(--ink);margin-bottom:4px;}
+  .ai-item p{font-size:14.5px;color:var(--slate);line-height:1.6;max-width:420px;}
+  @media (max-width:900px){ .ai-grid{grid-template-columns:1fr;} .ai-panel{order:-1;} }
+
+  /* ===== APPROACH BAND ===== */
+  .approach{background:var(--teal-l);}
+  .approach-line{
+    font-family:'Fraunces',serif;
+    font-size:24px;
+    font-weight:500;
+    color:var(--ink);
+    text-align:center;
+    max-width:760px;
+    margin:0 auto;
+    line-height:1.5;
+  }
+  .approach-line b{color:var(--teal);font-weight:600;}
+
+  /* ===== PARTNERS ===== */
+  .partners{background:var(--paper);}
+  .partner-cols{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin-top:12px;
+  }
+  .partner-col{background:var(--white);padding:28px 24px;min-height:130px;}
+  .partner-col .lbl{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;color:var(--slate-l);
+    text-transform:uppercase;letter-spacing:0.06em;
+    margin-bottom:14px;display:block;
+  }
+  .partner-col .ph{
+    font-size:13.5px;color:var(--slate);
+  }
+  @media (max-width:900px){ .partner-cols{grid-template-columns:1fr 1fr;} }
+
+  /* ===== CTA BAND ===== */
+  .cta-band{
+    background:var(--ink);
+    color:var(--white);
+    padding:88px 0;
+    text-align:center;
+  }
+  .cta-band h2{color:var(--white);font-size:36px;margin-bottom:16px;}
+  .cta-band p{color:rgba(255,255,255,0.7);font-size:16.5px;margin-bottom:36px;}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+  /* ===== FOOTER ===== */
+  footer{background:#081E2F;color:rgba(255,255,255,0.6);padding:56px 0 32px;}
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:40px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .footer-grid h4{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;color:rgba(255,255,255,0.4);
+    text-transform:uppercase;letter-spacing:0.06em;
+    margin-bottom:16px;
+  }
+  .footer-grid ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .footer-grid a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:14px;}
+  .footer-grid a:hover{color:var(--white);}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:24px;font-size:12.5px;color:rgba(255,255,255,0.4);
+    flex-wrap:wrap;gap:12px;
+  }
+  @media (max-width:760px){ .footer-grid{grid-template-columns:1fr 1fr;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">
+      <img class="logo-mark-img" src="saiil-logo-icon.png" alt="SAIIL">
+      <span class="logo-word">SAIIL</span>
+    </a>
+    <ul class="navlinks">
+      <li><a href="#approach">Our approach</a></li>
+      <li><a href="#ai">Where AI fits</a></li>
+      <li><a href="#sandbox">The sandbox</a></li>
+      <li><a href="#partners">Countries</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#" class="btn btn-outline">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="hero-eyebrow">Standards &middot; AI &middot; Interoperability</div>
+      <h1>Building Africa&rsquo;s <em>interoperability</em> foundation</h1>
+      <p class="hero-tagline">Making interoperability in health, work intelligently.</p>
+      <p class="lead">We help African health technology teams move from fragmented, proprietary systems to standards-based, conformance-validated architectures &mdash; so health data can finally move where it&rsquo;s needed.</p>
+      <div class="hero-ctas">
+        <a href="#sandbox" class="btn btn-primary">Explore the sandbox &rarr;</a>
+        <a href="#approach" class="btn btn-outline">See our approach</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">[X]</div>
+          <div class="lbl">Countries engaged</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">[X]</div>
+          <div class="lbl">Systems tested</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">[X]</div>
+          <div class="lbl">FHIR guides published</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 460 440">
+        <path class="link-path" d="M 90 70 L 230 130" stroke="#7FD9C9" style="animation-delay:.1s"/>
+        <path class="link-path" d="M 230 130 L 380 90" stroke="#7FD9C9" style="animation-delay:.3s"/>
+        <path class="link-path" d="M 230 130 L 150 240" stroke="#E2A33B" style="animation-delay:.5s"/>
+        <path class="link-path" d="M 230 130 L 330 250" stroke="#4A7C3C" style="animation-delay:.7s"/>
+        <path class="link-path" d="M 150 240 L 90 350" stroke="#7FD9C9" style="animation-delay:.9s"/>
+        <path class="link-path" d="M 150 240 L 330 250" stroke="#E2A33B" style="animation-delay:1.05s"/>
+        <path class="link-path" d="M 330 250 L 300 370" stroke="#4A7C3C" style="animation-delay:1.2s"/>
+        <path class="link-path" d="M 90 350 L 300 370" stroke="#7FD9C9" style="animation-delay:1.4s"/>
+
+        <g class="node-dot" style="animation-delay:.05s">
+          <circle class="node-circle" cx="90" cy="70" r="20"/>
+          <circle class="node-ring" cx="90" cy="70" r="20" stroke="#7FD9C9"/>
+          <text class="node-label" x="90" y="46" text-anchor="middle">HOSPITAL</text>
+        </g>
+        <g class="node-dot" style="animation-delay:.25s">
+          <circle class="node-circle" cx="230" cy="130" r="24"/>
+          <circle class="node-ring" cx="230" cy="130" r="24" stroke="#E2A33B" stroke-width="2"/>
+          <text class="node-label" x="230" y="176" text-anchor="middle" fill="#E2A33B">FHIR CORE</text>
+        </g>
+        <g class="node-dot" style="animation-delay:.35s">
+          <circle class="node-circle" cx="380" cy="90" r="18"/>
+          <circle class="node-ring" cx="380" cy="90" r="18" stroke="#4A7C3C"/>
+          <text class="node-label" x="380" y="68" text-anchor="middle">REGISTRY</text>
+        </g>
+        <g class="node-dot" style="animation-delay:.55s">
+          <circle class="node-circle" cx="150" cy="240" r="18"/>
+          <circle class="node-ring" cx="150" cy="240" r="18" stroke="#7FD9C9"/>
+          <text class="node-label" x="150" y="270" text-anchor="middle">LAB</text>
+        </g>
+        <g class="node-dot" style="animation-delay:.75s">
+          <circle class="node-circle" cx="330" cy="250" r="18"/>
+          <circle class="node-ring" cx="330" cy="250" r="18" stroke="#E2A33B"/>
+          <text class="node-label" x="330" y="230" text-anchor="middle">PHARMACY</text>
+        </g>
+        <g class="node-dot" style="animation-delay:.95s">
+          <circle class="node-circle" cx="90" cy="350" r="16"/>
+          <circle class="node-ring" cx="90" cy="350" r="16" stroke="#7FD9C9"/>
+          <text class="node-label" x="90" y="380" text-anchor="middle">MOBILE</text>
+        </g>
+        <g class="node-dot" style="animation-delay:1.15s">
+          <circle class="node-circle" cx="300" cy="370" r="16"/>
+          <circle class="node-ring" cx="300" cy="370" r="16" stroke="#4A7C3C"/>
+          <text class="node-label" x="300" y="400" text-anchor="middle">CLAIMS</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section class="section problem">
+  <div class="wrap">
+    <p class="problem-quote">Africa carries <span>24% of the global disease burden</span> but a fraction of the world&rsquo;s accessible, structured health data. Not because the data doesn&rsquo;t exist &mdash; but because the systems holding it can&rsquo;t talk to each other.</p>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="num">[X]</div>
+        <div class="lbl">Health systems tested for FHIR conformance</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">[X]</div>
+        <div class="lbl">National Implementation Guides published</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">[X]</div>
+        <div class="lbl">Technical staff trained through SAIIL cohorts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section fourTs" id="approach">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Our approach</div>
+      <h2>Four pillars, one methodology</h2>
+      <p>Every SAIIL engagement moves through the same sequence &mdash; each pillar building on the one before it: people first, then tools, then proof, then transfer of knowledge.</p>
+    </div>
+
+    <div class="t-sequence">
+      <div class="t-row">
+        <div class="t-num">01<b>T</b></div>
+        <div>
+          <h3>Teaming</h3>
+          <span class="t-tag">People before platforms</span>
+        </div>
+        <p>Cross-functional cohorts of developers, clinical informaticians, and ministry representatives come together in structured mentorship cycles &mdash; typically 8&ndash;12 weeks &mdash; learning to build and govern interoperable systems together, not in isolation.</p>
+      </div>
+      <div class="t-row">
+        <div class="t-num">02<b>T</b></div>
+        <div>
+          <h3>Tooling</h3>
+          <span class="t-tag">Shared infrastructure</span>
+        </div>
+        <p>Every team gets access to pre-configured, open-source interoperability infrastructure &mdash; HAPI FHIR, the EC Interoperability Test Bed, and FSH/SUSHI authoring environments &mdash; so no one starts from zero.</p>
+      </div>
+      <div class="t-row">
+        <div class="t-num">03<b>T</b></div>
+        <div>
+          <h3>Testing</h3>
+          <span class="t-tag">Trust, but verify</span>
+        </div>
+        <p>Systems are tested &mdash; automatically and repeatedly &mdash; against national and international FHIR standards using the ITB sandbox. Conformance isn&rsquo;t declared. It&rsquo;s demonstrated.</p>
+      </div>
+      <div class="t-row">
+        <div class="t-num">04<b>T</b></div>
+        <div>
+          <h3>Training</h3>
+          <span class="t-tag">Fundamentals to production</span>
+        </div>
+        <p>A phased curriculum takes teams from FHIR basics through profile authoring to full cross-system integration testing &mdash; contextualised to African health system realities, delivered low-bandwidth and train-the-trainer ready.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section ai-layer" id="ai">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Where AI fits</div>
+      <h2>Intelligence layered on standards, not instead of them</h2>
+      <p>FHIR and IHE profiles set the rules. AI helps teams get there faster &mdash; suggesting mappings, explaining failures in plain language, and catching data-quality issues before they reach the test bed. The standard stays the source of truth; the ministry stays in control.</p>
+    </div>
+
+    <div class="ai-grid">
+      <div class="ai-panel" aria-hidden="true">
+        <svg viewBox="0 0 450 300">
+          <g class="ai-mesh">
+            <line x1="40" y1="30" x2="225" y2="15"/>
+            <line x1="40" y1="30" x2="225" y2="80"/>
+            <line x1="40" y1="95" x2="225" y2="80"/>
+            <line x1="40" y1="95" x2="225" y2="145"/>
+            <line x1="40" y1="160" x2="225" y2="145"/>
+            <line x1="40" y1="160" x2="225" y2="210"/>
+            <line x1="40" y1="225" x2="225" y2="210"/>
+            <line x1="40" y1="225" x2="225" y2="275"/>
+            <line x1="225" y1="15" x2="410" y2="80"/>
+            <line x1="225" y1="80" x2="410" y2="80"/>
+            <line x1="225" y1="80" x2="410" y2="150"/>
+            <line x1="225" y1="145" x2="410" y2="80"/>
+            <line x1="225" y1="145" x2="410" y2="150"/>
+            <line x1="225" y1="145" x2="410" y2="220"/>
+            <line x1="225" y1="210" x2="410" y2="150"/>
+            <line x1="225" y1="210" x2="410" y2="220"/>
+            <line x1="225" y1="275" x2="410" y2="220"/>
+          </g>
+
+          <path class="ai-pulse-path" pathLength="1" d="M40 95 L225 80 L410 80" stroke="#7FD9C9" style="animation-delay:.1s"/>
+          <path class="ai-pulse-path" pathLength="1" d="M40 160 L225 145 L410 150" stroke="#E2A33B" style="animation-delay:.5s"/>
+          <path class="ai-pulse-path" pathLength="1" d="M40 225 L225 210 L410 220" stroke="#8FD08A" style="animation-delay:.9s"/>
+
+          <circle class="ai-node" cx="40" cy="30" r="6" stroke="#7FD9C9"/>
+          <circle class="ai-node" cx="40" cy="95" r="6" stroke="#7FD9C9"/>
+          <circle class="ai-node" cx="40" cy="160" r="6" stroke="#7FD9C9"/>
+          <circle class="ai-node" cx="40" cy="225" r="6" stroke="#7FD9C9"/>
+
+          <circle class="ai-node" cx="225" cy="15" r="6" stroke="#E2A33B"/>
+          <circle class="ai-node" cx="225" cy="80" r="6" stroke="#E2A33B"/>
+          <circle class="ai-node ai-node-active" cx="225" cy="145" r="7.5" stroke="#E2A33B" stroke-width="1.8"/>
+          <circle class="ai-node" cx="225" cy="210" r="6" stroke="#E2A33B"/>
+          <circle class="ai-node" cx="225" cy="275" r="6" stroke="#E2A33B"/>
+          <path d="M225 141 L226.3 143.7 L229 145 L226.3 146.3 L225 149 L223.7 146.3 L221 145 L223.7 143.7 Z" fill="#E2A33B"/>
+
+          <circle class="ai-node" cx="410" cy="80" r="6" stroke="#8FD08A"/>
+          <circle class="ai-node" cx="410" cy="150" r="6" stroke="#8FD08A"/>
+          <circle class="ai-node" cx="410" cy="220" r="6" stroke="#8FD08A"/>
+
+          <text class="node-label" x="40" y="256" text-anchor="middle">SYSTEMS</text>
+          <text class="node-label" x="225" y="294" text-anchor="middle" fill="#E2A33B">AI INFERENCE</text>
+          <text class="node-label" x="410" y="248" text-anchor="middle">FHIR OUTPUT</text>
+        </svg>
+      </div>
+
+      <ul class="ai-list">
+        <li class="ai-item">
+          <span class="ai-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0F6E64" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="5" cy="12" r="2"/>
+              <circle cx="19" cy="12" r="2"/>
+              <path d="M7 12 H14 M12 8.5 L16 12 L12 15.5"/>
+            </svg>
+          </span>
+          <div>
+            <h4>Smart mapping</h4>
+            <p>AI proposes field-to-profile mappings from legacy exports and HL7v2 feeds, so implementers start from a draft instead of a blank FSH file.</p>
+          </div>
+        </li>
+        <li class="ai-item">
+          <span class="ai-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0F6E64" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 5.5h16a1.5 1.5 0 011.5 1.5v7a1.5 1.5 0 01-1.5 1.5H10l-4.5 3.5V15.5H4A1.5 1.5 0 012.5 14V7A1.5 1.5 0 014 5.5z"/>
+              <path d="M8 10h8 M8 12.5h5" stroke-width="1.5"/>
+            </svg>
+          </span>
+          <div>
+            <h4>Conformance copilot</h4>
+            <p>When validation fails, AI explains why in plain language &mdash; not just an error code &mdash; and points to the specific rule in the implementation guide.</p>
+          </div>
+        </li>
+        <li class="ai-item">
+          <span class="ai-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0F6E64" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 13h4l2.5-7 3 12 2.5-9 2 4h6"/>
+            </svg>
+          </span>
+          <div>
+            <h4>Anomaly detection</h4>
+            <p>Pattern recognition flags likely data-quality issues &mdash; duplicate identifiers, coding drift, missing references &mdash; before they ever reach the test bed.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section sandbox" id="sandbox">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The sandbox</div>
+      <h2 style="color:#fff;">Test before you trust</h2>
+      <p>Our Interoperability Test Bed validates that health systems conform to FHIR standards &mdash; before they ever connect to a live health information exchange.</p>
+    </div>
+
+    <div class="sandbox-grid">
+      <div class="terminal">
+        <div class="terminal-head">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="terminal-body">
+<div><span class="t-comment">&gt; validating Claim resource against ke-eclaims-claim</span></div>
+<div>&nbsp;</div>
+<div><span class="t-key">"resourceType"</span>: <span class="t-str">"Claim"</span>,</div>
+<div><span class="t-key">"status"</span>: <span class="t-str">"active"</span>  <span class="t-pass">✓ valid</span></div>
+<div><span class="t-key">"type.coding.code"</span>: <span class="t-str">"institutional"</span>  <span class="t-pass">✓ valid</span></div>
+<div><span class="t-key">"insurer.reference"</span>: <span class="t-str">"Organization/NHIF-KE"</span>  <span class="t-pass">✓ valid</span></div>
+<div><span class="t-key">"diagnosis"</span>: [ ]  <span class="t-fail">✗ required, min 1</span></div>
+<div>&nbsp;</div>
+<div><span class="t-comment">&gt; 3 of 4 checks passed &middot; 1 blocking error</span></div>
+        </div>
+      </div>
+
+      <div>
+        <ul class="sandbox-list">
+          <li><span class="chk">01</span> Sends standardised requests against the relevant national FHIR Implementation Guide</li>
+          <li><span class="chk">02</span> Validates structure, coding, and referential integrity &mdash; not just presence of data</li>
+          <li><span class="chk">03</span> Returns specific, actionable results &mdash; not a vague pass or fail</li>
+          <li><span class="chk">04</span> Conformant systems receive a certificate, ready for connection to live exchange</li>
+        </ul>
+        <div style="margin-top:32px;">
+          <a href="#" class="btn btn-primary">Request sandbox access &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="approach" style="padding:72px 0;">
+  <div class="wrap">
+    <p class="approach-line">We don&rsquo;t replace government investments. <b>We make them interoperate.</b></p>
+  </div>
+</section>
+
+<section class="section partners" id="partners">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Countries &amp; partners</div>
+      <h2>Working alongside existing systems</h2>
+      <p>SAIIL works with &mdash; not instead of &mdash; national institutions and existing digital health investments.</p>
+    </div>
+    <div class="partner-cols">
+      <div class="partner-col">
+        <span class="lbl">Governments</span>
+        <div class="ph">[Ministry of Health logos]</div>
+      </div>
+      <div class="partner-col">
+        <span class="lbl">Implementing partners</span>
+        <div class="ph">[Partner logos]</div>
+      </div>
+      <div class="partner-col">
+        <span class="lbl">Standards bodies</span>
+        <div class="ph">[HL7 / IHE / HELINA]</div>
+      </div>
+      <div class="partner-col">
+        <span class="lbl">Funders</span>
+        <div class="ph">[Funder logos]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Ready to build systems that actually talk to each other?</h2>
+    <p>Whether you&rsquo;re a ministry, an implementer, or a funding partner &mdash; there&rsquo;s a place to start.</p>
+    <div class="cta-row">
+      <a href="#" class="btn btn-primary">Get in touch &rarr;</a>
+      <a href="#sandbox" class="btn btn-outline">Start with the sandbox</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:11px;">
+          <img class="logo-mark-img" style="height:50px;" src="saiil-logo-icon.png" alt="SAIIL">
+          <span class="logo-word" style="color:#fff;font-size:20px;">SAIIL</span>
+        </div>
+        <p style="margin-top:14px;font-family:'Fraunces',serif;font-style:italic;font-size:14.5px;color:#7FD9C9;max-width:260px;">Making interoperability in health, work intelligently.</p>
+        <p style="margin-top:10px;font-size:13.5px;color:rgba(255,255,255,0.5);max-width:260px;">Standards, Artificial Intelligence &amp; Interoperability Lab &mdash; building Africa&rsquo;s interoperability foundation.</p>
+      </div>
+      <div>
+        <h4>Approach</h4>
+        <ul>
+          <li><a href="#approach">The 4Ts</a></li>
+          <li><a href="#sandbox">The sandbox</a></li>
+          <li><a href="#">Case studies</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">FHIR implementation guides</a></li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Get involved</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">Talk to our team</a></li>
+          <li><a href="#">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 SAIIL. Strawman draft &mdash; not for public release.</span>
+      <span class="mono">v0.1</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

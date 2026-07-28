@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(open \"/Users/daviemukungi/SoftwareDev/SAIIL/SAIIL_Homepage_Strawman.html\")",
+      "Bash(python3 -c ' *)",
+      "Bash(cd \"/Users/daviemukungi/SoftwareDev/SAIIL\" && which wkhtmltoimage chromium google-chrome 2>/dev/null; ls /Applications | grep -i \"Google Chrome\")",
+      "Read(//Applications/**)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --screenshot=/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/saiil_full.png --window-size=1400,4400 --default-background-color=00000000 \"file://$\\(pwd\\)/SAIIL_Homepage_Strawman.html\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --screenshot=/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/saiil_full2.png --window-size=1400,4400 --virtual-time-budget=4000 --default-background-color=00000000 \"file://$\\(pwd\\)/SAIIL_Homepage_Strawman.html\")",
+      "Bash(sips -c 200 400 -o nav_logo.png --cropOffset 60 20 saiil_full2.png)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --screenshot=/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/saiil_footer.png --window-size=1400,5600 --virtual-time-budget=4000 \"file://$\\(pwd\\)/SAIIL_Homepage_Strawman.html\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --screenshot=/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/saiil_v2.png --window-size=1400,5600 --virtual-time-budget=4000 \"file://$\\(pwd\\)/SAIIL_Homepage_Strawman.html\")",
+      "Bash(md5 \"/Users/daviemukungi/SoftwareDev/SAIIL/SAIIL Logo updated.png\" \"/Users/daviemukungi/SoftwareDev/SAIIL/saiil-logo-icon.png\" \"/Users/daviemukungi/SoftwareDev/SAIIL/saiil-favicon.png\")",
+      "Bash(md5 \"/Users/daviemukungi/SoftwareDev/SAIIL/Logo/SAIIL Logo updated.png\" \"/Users/daviemukungi/SoftwareDev/SAIIL/Logo/saiil-logo-icon.png\" \"/Users/daviemukungi/SoftwareDev/SAIIL/Logo/saiil-favicon.png\")",
+      "Bash(python3 -m venv /private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/venv)",
+      "Bash(/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/venv/bin/pip install *)",
+      "Bash(/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/venv/bin/python3 -c ' *)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --screenshot=/private/tmp/claude-501/-Users-daviemukungi-SoftwareDev-SAIIL/863feadd-c91c-4da4-adae-20502d2e01b0/scratchpad/saiil_v3.png --window-size=1400,5600 --virtual-time-budget=4000 \"file://$\\(pwd\\)/SAIIL_Homepage_Strawman.html\")"
+    ]
+  }
+}
