@@ -564,6 +564,44 @@
   .cta-band p{color:rgba(255,255,255,0.7);font-size:16.5px;margin-bottom:36px;}
   .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 
+  /* ===== CONTACT ===== */
+  .contact-section{background:var(--white);}
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:56px;
+    align-items:start;
+  }
+  .contact-info h3{font-size:20px;margin-bottom:10px;color:var(--ink);}
+  .contact-info p{color:var(--slate);font-size:15px;line-height:1.65;margin-bottom:20px;}
+  .contact-email{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono',monospace;font-size:15px;
+    color:var(--teal);text-decoration:none;font-weight:500;
+  }
+  .contact-email:hover{text-decoration:underline;}
+  .contact-form{display:flex;flex-direction:column;gap:16px;}
+  .contact-form label{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;
+    text-transform:uppercase;letter-spacing:0.06em;color:var(--slate);
+    margin-bottom:6px;display:block;
+  }
+  .contact-form input, .contact-form textarea{
+    width:100%;
+    font-family:'IBM Plex Sans',sans-serif;font-size:15px;
+    color:var(--ink);
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:3px;
+    background:var(--paper);
+  }
+  .contact-form input:focus, .contact-form textarea:focus{
+    outline:2px solid var(--teal);outline-offset:1px;
+  }
+  .contact-form textarea{resize:vertical;min-height:120px;}
+  .contact-form-status{font-size:14px;color:var(--slate);min-height:18px;}
+  @media (max-width:760px){ .contact-grid{grid-template-columns:1fr;} }
+
   /* ===== FOOTER ===== */
   footer{background:#081E2F;color:rgba(255,255,255,0.6);padding:56px 0 32px;}
   .footer-grid{
@@ -605,7 +643,7 @@
       <li><a href="#partners">Countries</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="#" class="btn btn-outline">Contact</a>
+      <a href="#contact" class="btn btn-outline">Contact</a>
     </div>
   </div>
 </nav>
@@ -989,8 +1027,43 @@
     <h2>Ready to build systems that actually talk to each other?</h2>
     <p>Whether you&rsquo;re a ministry, an implementer, or a funding partner &mdash; there&rsquo;s a place to start.</p>
     <div class="cta-row">
-      <a href="#" class="btn btn-primary">Get in touch &rarr;</a>
+      <a href="#contact" class="btn btn-primary">Get in touch &rarr;</a>
       <a href="#sandbox" class="btn btn-outline">Start with the sandbox</a>
+    </div>
+  </div>
+</section>
+
+<section class="section contact-section" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Contact</div>
+      <h2>Get in touch</h2>
+      <p>Ministry, implementer, or funding partner &mdash; send us a message and we&rsquo;ll follow up.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Email us directly</h3>
+        <p>Prefer to write straight to our inbox? We read every message.</p>
+        <a class="contact-email" href="mailto:davidmukungi@saiil.africa">davidmukungi@saiil.africa</a>
+      </div>
+      <form class="contact-form" action="https://formsubmit.co/davidmukungi@saiil.africa" method="POST">
+        <input type="hidden" name="_subject" value="New message from the SAIIL website">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div>
+          <label for="contact-name">Name</label>
+          <input type="text" id="contact-name" name="name" required>
+        </div>
+        <div>
+          <label for="contact-email-input">Email</label>
+          <input type="email" id="contact-email-input" name="email" required>
+        </div>
+        <div>
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send message &rarr;</button>
+      </form>
     </div>
   </div>
 </section>
@@ -1025,8 +1098,8 @@
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><a href="#">Talk to our team</a></li>
-          <li><a href="#">Newsletter</a></li>
+          <li><a href="#contact">Talk to our team</a></li>
+          <li><a href="mailto:davidmukungi@saiil.africa">davidmukungi@saiil.africa</a></li>
         </ul>
       </div>
     </div>
