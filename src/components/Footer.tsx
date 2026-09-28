@@ -1,74 +1,88 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   return (
-    <footer>
-      <div className="wrap">
+    <footer className="site-footer">
+      <div className="footer-container">
         <div className="footer-grid">
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '11px' }}>
-              <img className="logo-mark-img" style={{ height: '50px' }} src="/saiil-logo-icon.png" alt="SAIIL" />
-              <span className="logo-word" style={{ color: '#fff', fontSize: '20px' }}>
+          <div className="footer-col-brand">
+            <div className="footer-brand-title">
+              <span className="footer-brand-name">
                 SAIIL
               </span>
             </div>
-            <p
-              style={{
-                marginTop: '14px',
-                fontFamily: "'Fraunces', serif",
-                fontStyle: 'italic',
-                fontSize: '14.5px',
-                color: '#7FD9C9',
-                maxWidth: '260px',
-              }}
-            >
-              Making interoperability in health, work intelligently.
-            </p>
-            <p
-              style={{
-                marginTop: '10px',
-                fontSize: '13.5px',
-                color: 'rgba(255, 255, 255, 0.5)',
-                maxWidth: '260px',
-              }}
-            >
-              Standards, Artificial Intelligence &amp; Interoperability Lab &mdash; building Africa&rsquo;s
-              interoperability foundation.
+            <p className="footer-brand-desc">
+              Standards, AI &amp; Interoperability Lab. Building the infrastructure for connected health systems across
+              Africa.
             </p>
           </div>
 
-          <div>
-            <h4>Approach</h4>
-            <ul>
-              <li><a href="#approach">The 4Ts</a></li>
-              <li><a href="#sandbox">The sandbox</a></li>
-              <li><a href="#approach">Case studies</a></li>
-            </ul>
+          <div className="footer-col">
+            <h4 className="footer-heading">
+              Organisation
+            </h4>
+            {[
+              { label: 'About', href: '/about' },
+              { label: 'What We Do', href: '/what-we-do' },
+              { label: 'Test Bed', href: '/test-bed' },
+            ].map((item) => (
+              <div key={item.label} className="footer-link-item">
+                <Link to={item.href} className="footer-link">
+                  {item.label}
+                </Link>
+              </div>
+            ))}
           </div>
 
-          <div>
-            <h4>Resources</h4>
-            <ul>
-              <li><a href="#sandbox">FHIR implementation guides</a></li>
-              <li><a href="#sandbox">Documentation</a></li>
-              <li><a href="#contact">Get involved</a></li>
-            </ul>
+          <div className="footer-col">
+            <h4 className="footer-heading">
+              Resources
+            </h4>
+            {[
+              { label: 'Resources', href: '/resources' },
+              { label: 'Countries & Partners', href: '/countries' },
+              { label: 'Contact', href: '/contact' },
+            ].map((item) => (
+              <div key={item.label} className="footer-link-item">
+                <Link to={item.href} className="footer-link">
+                  {item.label}
+                </Link>
+              </div>
+            ))}
           </div>
 
-          <div>
-            <h4>Contact</h4>
-            <ul>
-              <li><a href="#contact">Talk to our team</a></li>
-              <li><a href="mailto:davidmukungi@saiil.africa">davidmukungi@saiil.africa</a></li>
-            </ul>
+          <div className="footer-col">
+            <h4 className="footer-heading">
+              Test Bed
+            </h4>
+            <Link to="/test-bed-access" className="footer-btn-test-bed">
+              Access Test Bed
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <p className="footer-btn-desc">
+              FHIR validation &amp; conformance testing for health systems.
+            </p>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <span>&copy; {new Date().getFullYear()} SAIIL</span>
-          <span className="mono">v0.1</span>
+          <p className="footer-copyright">
+            &copy; 2025 SAIIL Africa. All rights reserved.
+          </p>
+          <div className="footer-legal-links">
+            {['Privacy Policy', 'Terms of Use', 'Accessibility'].map((item) => (
+              <span key={item} className="footer-legal-item">
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
   );
 };
+
+export default Footer;

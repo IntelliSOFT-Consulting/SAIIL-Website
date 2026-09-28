@@ -1,64 +1,45 @@
-import React, { useState } from 'react';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { ProblemSection } from './components/ProblemSection';
-import { FourTsSection } from './components/FourTsSection';
-import { AiLayerSection } from './components/AiLayerSection';
-import { SandboxSection } from './components/SandboxSection';
-import { Lightbox } from './components/Lightbox';
-import { ApproachBand } from './components/ApproachBand';
-import { PartnersSection } from './components/PartnersSection';
-import { CtaBand } from './components/CtaBand';
-import { ContactSection } from './components/ContactSection';
-import { Footer } from './components/Footer';
-import { galleryItems } from './data/gallery';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { Layout } from './components/Layout';
+import { Home } from './pages/Home';
+import { About } from './pages/About';
+import { WhatWeDo } from './pages/WhatWeDo';
+import { TestBed } from './pages/TestBed';
+import { TestBedAccess } from './pages/TestBedAccess';
+import { Resources } from './pages/Resources';
+import { ResourceDetail } from './pages/ResourceDetail';
+import { Countries } from './pages/Countries';
+import { Contact } from './pages/Contact';
+
+const ScrollToTop: React.FC = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 export const App: React.FC = () => {
-  const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
-
-  const handleOpenLightbox = (index: number) => {
-    setActiveLightboxIndex(index);
-  };
-
-  const handleCloseLightbox = () => {
-    setActiveLightboxIndex(null);
-  };
-
-  const handlePrevLightbox = () => {
-    if (activeLightboxIndex === null) return;
-    setActiveLightboxIndex((activeLightboxIndex - 1 + galleryItems.length) % galleryItems.length);
-  };
-
-  const handleNextLightbox = () => {
-    if (activeLightboxIndex === null) return;
-    setActiveLightboxIndex((activeLightboxIndex + 1) % galleryItems.length);
-  };
-
-  const activeItem = activeLightboxIndex !== null ? galleryItems[activeLightboxIndex] : null;
-
   return (
-    <div className="app-container">
-      <Navbar />
-      <main>
-        <Hero />
-        <ProblemSection />
-        <FourTsSection />
-        <AiLayerSection />
-        <SandboxSection onOpenLightbox={handleOpenLightbox} />
-        <ApproachBand />
-        <PartnersSection />
-        <CtaBand />
-        <ContactSection />
-      </main>
-      <Footer />
-      <Lightbox
-        isOpen={activeLightboxIndex !== null}
-        item={activeItem}
-        onClose={handleCloseLightbox}
-        onPrev={handlePrevLightbox}
-        onNext={handleNextLightbox}
-      />
-    </div>
+    <BrowserRouter>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="what-we-do" element={<WhatWeDo />} />
+          <Route path="test-bed" element={<TestBed />} />
+          <Route path="test-bed-access" element={<TestBedAccess />} />
+          <Route path="resources" element={<Resources />} />
+          <Route path="resources/detail" element={<ResourceDetail />} />
+          <Route path="countries" element={<Countries />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<Home />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 

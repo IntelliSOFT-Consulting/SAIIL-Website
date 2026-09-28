@@ -1,0 +1,296 @@
+/* ==========================================================================
+   Resources Page Styles
+   ========================================================================== */
+
+.resources-section {
+  background-color: #F8F7F2;
+  padding: 4rem 2rem;
+}
+
+.resources-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Featured Resource Banner
+   -------------------------------------------------------------------------- */
+.resources-featured-card {
+  background-color: #173F3A;
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  border: 1px solid rgba(185, 106, 69, 0.25);
+}
+
+@media (max-width: 860px) {
+  .resources-featured-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+.resources-featured-tags {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.resources-featured-pill {
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  background-color: rgba(185, 106, 69, 0.2);
+  color: #B96A45;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.resources-featured-type {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.resources-featured-date {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-mono);
+}
+
+.resources-featured-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: #FFFFFF;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.resources-featured-sub {
+  font-size: 14px;
+  color: #B96A45;
+  font-style: italic;
+  margin-bottom: 14px;
+}
+
+.resources-featured-desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
+  max-width: 580px;
+  margin-bottom: 24px;
+}
+
+.resources-featured-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 20px;
+  background-color: #B96A45;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.resources-featured-btn:hover {
+  background-color: #a25b39;
+}
+
+.resources-featured-toc {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 2;
+  min-width: 220px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.resources-toc-head {
+  color: #B96A45;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.resources-toc-meta {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   Filter Toolbar
+   -------------------------------------------------------------------------- */
+.resources-toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.resources-search-wrap {
+  flex: 1;
+  min-width: 220px;
+  position: relative;
+}
+
+.resources-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  stroke: #24312F;
+}
+
+.resources-search-input {
+  width: 100%;
+  padding: 9px 12px 9px 38px;
+  border: 1px solid #E0DDD4;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #FFFFFF;
+  outline: none;
+  color: #24312F;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.resources-search-input:focus {
+  border-color: #3F7770;
+}
+
+.resources-cat-btns {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.resources-cat-btn {
+  padding: 7px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.resources-cat-btn-active {
+  background-color: #173F3A;
+  color: #FFFFFF;
+  border: 1px solid #173F3A;
+}
+
+.resources-cat-btn-inactive {
+  background-color: #FFFFFF;
+  color: #24312F;
+  border: 1px solid #E0DDD4;
+}
+
+.resources-cat-btn-inactive:hover {
+  background-color: #E8E5DC;
+}
+
+/* --------------------------------------------------------------------------
+   Resource Cards Grid
+   -------------------------------------------------------------------------- */
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.resource-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E0DDD4;
+  border-radius: 8px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.resource-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.resource-badge {
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.resource-badge-ig {
+  background-color: #E8E5DC;
+  color: #3F7770;
+}
+
+.resource-badge-concept {
+  background-color: #173F3A;
+  color: #B96A45;
+}
+
+.resource-badge-default {
+  background-color: #F8F7F2;
+  color: #24312F;
+}
+
+.resource-card-date {
+  font-size: 11px;
+  color: #24312F;
+  font-family: var(--font-mono);
+}
+
+.resource-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: #173F3A;
+  margin-bottom: 8px;
+  line-height: 1.3;
+  flex: 1;
+}
+
+.resource-card-desc {
+  font-size: 13px;
+  color: #24312F;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.resource-card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px;
+  background-color: #173F3A;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 12.5px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.resource-card-btn:hover {
+  background-color: #24312F;
+}
