@@ -21,8 +21,13 @@ interface ContactFormState {
   message: string;
 }
 
+const CONTACT_API_URL = '/api/contact.php';
+const CONTACT_EMAIL = 'davidmukungi@saiil.africa';
+
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState<ContactFormState>({
     name: '',
     org: '',
@@ -32,9 +37,44 @@ export function Contact() {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setError(null);
+
+    const payload = {
+      name: form.name,
+      email: form.email,
+      organisation: form.org || 'Not specified',
+      audience: form.audience || 'Not specified',
+      area_of_interest: form.interest || 'Not specified',
+      message: form.message,
+      _subject: `New SAIIL Inquiry from ${form.name}`
+    };
+
+    try {
+      const response = await fetch(CONTACT_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const resData = await response.json().catch(() => null);
+
+      if (response.ok && resData?.ok) {
+        setSubmitted(true);
+      } else {
+        setError(resData?.error || 'Unable to send message. Please try again or email us directly.');
+      }
+    } catch (err) {
+      console.error('Submission error:', err);
+      setError(`Unable to connect to the mail service. Please contact us directly at ${CONTACT_EMAIL}.`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -59,14 +99,41 @@ export function Contact() {
               <p className="contact-success-desc">
                 Thank you for reaching out. A member of the SAIIL team will be in touch within two working days.
               </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setSubmitted(false);
+                  setForm({
+                    name: '',
+                    org: '',
+                    email: '',
+                    audience: '',
+                    interest: '',
+                    message: ''
+                  });
+                }}
+                className="contact-secondary-btn"
+              >
+                Send another message
+              </button>
             </div>
           ) : (
             <div className="contact-form-card">
               <form onSubmit={handleSubmit} className="contact-form">
+                <input type="text" name="_honey" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+
+                {error && (
+                  <div className="contact-error-box">
+                    <span>{error}</span>{' '}
+                    <a href={`mailto:${CONTACT_EMAIL}`}>Send email directly &rarr;</a>
+                  </div>
+                )}
+
                 <div className="contact-field">
                   <label className="contact-label">I am contacting SAIIL as</label>
                   <div className="contact-select-wrap">
                     <select
+                      name="audience"
                       value={form.audience}
                       onChange={(e) => setForm((prev) => ({ ...prev, audience: e.target.value }))}
                       required
@@ -90,6 +157,7 @@ export function Contact() {
                   <div className="contact-field">
                     <label className="contact-label">Name</label>
                     <input
+                      name="name"
                       value={form.name}
                       onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
                       required
@@ -100,6 +168,7 @@ export function Contact() {
                   <div className="contact-field">
                     <label className="contact-label">Organisation</label>
                     <input
+                      name="org"
                       value={form.org}
                       onChange={(e) => setForm((prev) => ({ ...prev, org: e.target.value }))}
                       className="contact-input"
@@ -111,6 +180,7 @@ export function Contact() {
                 <div className="contact-field">
                   <label className="contact-label">Email</label>
                   <input
+                    name="email"
                     type="email"
                     value={form.email}
                     onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
@@ -124,6 +194,7 @@ export function Contact() {
                   <label className="contact-label">Area of interest</label>
                   <div className="contact-select-wrap">
                     <select
+                      name="interest"
                       value={form.interest}
                       onChange={(e) => setForm((prev) => ({ ...prev, interest: e.target.value }))}
                       className="contact-select"
@@ -144,6 +215,7 @@ export function Contact() {
                 <div className="contact-field">
                   <label className="contact-label">Message</label>
                   <textarea
+                    name="message"
                     value={form.message}
                     onChange={(e) => setForm((prev) => ({ ...prev, message: e.target.value }))}
                     required
@@ -153,12 +225,21 @@ export function Contact() {
                   />
                 </div>
 
-                <button type="submit" className="contact-submit-btn">
-                  Send message
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <line x1="22" y1="2" x2="11" y2="13" />
-                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                  </svg>
+                <button type="submit" className="contact-submit-btn" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <span>Sending message...</span>
+                      <span className="contact-spinner" />
+                    </>
+                  ) : (
+                    <>
+                      Send message
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <line x1="22" y1="2" x2="11" y2="13" />
+                        <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                      </svg>
+                    </>
+                  )}
                 </button>
               </form>
             </div>
@@ -173,8 +254,8 @@ export function Contact() {
             </div>
 
             {[
-              { label: 'General Enquiries', value: 'info@saiil.africa' },
-              { label: 'Test Bed Support', value: 'testbed@saiil.africa' }
+              { label: 'General Enquiries', value: 'davidmukungi@saiil.africa' },
+              { label: 'Test Bed Support', value: 'davidmukungi@saiil.africa' }
             ].map((contact, idx) => (
               <div key={idx} className="contact-info-item">
                 <div className="contact-info-label">{contact.label}</div>
@@ -187,7 +268,7 @@ export function Contact() {
             <div className="contact-notice-box">
               <div className="contact-notice-title">Response Time</div>
               <p className="contact-notice-text">
-                SAIIL responds to all enquiries within two working days. For urgent Test Bed support, email testbed@saiil.africa with the subject line [URGENT].
+                SAIIL responds to all enquiries within two working days. For urgent Test Bed support, email davidmukungi@saiil.africa with the subject line [URGENT].
               </p>
             </div>
           </div>

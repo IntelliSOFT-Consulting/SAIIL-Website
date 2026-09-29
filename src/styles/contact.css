@@ -156,11 +156,68 @@
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
 }
 
-.contact-submit-btn:hover {
+.contact-submit-btn:hover:not(:disabled) {
   background-color: #a25b39;
+}
+
+.contact-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.contact-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 22px;
+  background-color: transparent;
+  color: #173F3A;
+  border: 1.5px solid #173F3A;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.contact-secondary-btn:hover {
+  background-color: #173F3A;
+  color: #FFFFFF;
+}
+
+.contact-error-box {
+  padding: 0.85rem 1rem;
+  border-radius: 4px;
+  background-color: #FDF2F2;
+  border: 1px solid #F8B4B4;
+  color: #9B1C1C;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.contact-error-box a {
+  color: #9B1C1C;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-left: 6px;
+}
+
+@keyframes contact-spin {
+  to { transform: rotate(360deg); }
+}
+
+.contact-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: contact-spin 0.6s linear infinite;
 }
 
 /* Sidebar Info */

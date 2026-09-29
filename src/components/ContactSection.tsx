@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const CONTACT_EMAIL = 'davidmukungi@saiil.africa';
+
 export const ContactSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -11,25 +13,32 @@ export const ContactSection: React.FC = () => {
     setError(null);
 
     const formData = new FormData(e.currentTarget);
+    const payload = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+      _honey: formData.get('_honey')
+    };
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/davidmukungi@saiil.africa', {
+      const response = await fetch('/api/contact.php', {
         method: 'POST',
         headers: {
+          'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
-        body: formData,
+        body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
+      const data = await response.json().catch(() => null);
+
+      if (response.ok && data?.ok) {
         setSubmitted(true);
       } else {
-        // Fallback to standard form submit if fetch fails
-        e.currentTarget.submit();
+        setError(data?.error || 'Submission failed. Please email us directly.');
       }
     } catch {
-      // Fallback
-      e.currentTarget.submit();
+      setError('Unable to send message at this time. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -47,8 +56,8 @@ export const ContactSection: React.FC = () => {
           <div className="contact-info">
             <h3>Email us directly</h3>
             <p>Prefer to write straight to our inbox? We read every message.</p>
-            <a className="contact-email" href="mailto:davidmukungi@saiil.africa">
-              davidmukungi@saiil.africa
+            <a className="contact-email" href={`mailto:${CONTACT_EMAIL}`}>
+              {CONTACT_EMAIL}
             </a>
           </div>
 
@@ -60,7 +69,7 @@ export const ContactSection: React.FC = () => {
           ) : (
             <form
               className="contact-form"
-              action="https://formsubmit.co/davidmukungi@saiil.africa"
+              action="/api/contact.php"
               method="POST"
               onSubmit={handleSubmit}
             >
