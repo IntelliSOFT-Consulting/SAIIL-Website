@@ -49,7 +49,7 @@ export function TestBedAccess() {
                 </li>
               ))}
             </ul>
-            <a href="#staff-login" className="tbaccess-btn-staff">
+            <a href="https://lab.saiil.africa/app#/login" className="tbaccess-btn-staff">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
                 <polyline points="10 17 15 12 10 7" />
@@ -86,7 +86,7 @@ export function TestBedAccess() {
               <a href="#create-account" className="tbaccess-btn-create">
                 Create Account
               </a>
-              <a href="#public-login" className="tbaccess-btn-login">
+              <a href="https://sandbox.saiil.africa/" className="tbaccess-btn-login">
                 Public Login
               </a>
             </div>
