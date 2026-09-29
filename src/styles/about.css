@@ -1,0 +1,360 @@
+/* ==========================================================================
+   About Page Styles
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Who We Are / Intro Section
+   -------------------------------------------------------------------------- */
+.about-intro-section {
+  background-color: #F8F7F2;
+  padding: 6rem 2rem;
+}
+
+.about-intro-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .about-intro-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.about-intro-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #3F7770;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.about-intro-heading {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: #173F3A;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.about-intro-p {
+  font-size: 16px;
+  color: #24312F;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.about-intro-p-last {
+  margin-bottom: 0;
+}
+
+.about-intro-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about-intro-card {
+  padding: 1.5rem;
+  background-color: #FFFFFF;
+  border: 1px solid #E0DDD4;
+  border-radius: 8px;
+}
+
+.about-intro-card-title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #173F3A;
+  margin-bottom: 10px;
+}
+
+.about-intro-card-desc {
+  font-size: 14.5px;
+  color: #24312F;
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   Our Journey / Timeline Section
+   -------------------------------------------------------------------------- */
+.about-journey-section {
+  background-color: #173F3A;
+  padding: 6rem 2rem;
+}
+
+.about-journey-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.about-journey-header {
+  margin-bottom: 4rem;
+}
+
+.about-journey-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #B96A45;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.about-journey-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: #FFFFFF;
+  line-height: 1.15;
+}
+
+.about-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  position: relative;
+}
+
+.about-timeline-line {
+  position: absolute;
+  top: 28px;
+  left: calc(100% / 6);
+  right: calc(100% / 6);
+  height: 1px;
+  background: rgba(185, 106, 69, 0.35);
+  z-index: 0;
+}
+
+.about-timeline-step {
+  padding: 0 2rem;
+}
+
+.about-timeline-circle-wrap {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 16px;
+}
+
+.about-timeline-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #0F2B27;
+  border: 2px solid #B96A45;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-timeline-year {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: #B96A45;
+  letter-spacing: 0.06em;
+}
+
+.about-timeline-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  justify-content: center;
+}
+
+.about-timeline-era {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: #B96A45;
+  font-weight: 600;
+}
+
+.about-timeline-tag {
+  padding: 2px 6px;
+  background-color: rgba(185, 106, 69, 0.15);
+  border-radius: 3px;
+  font-size: 10px;
+  color: #B96A45;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+}
+
+.about-timeline-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+}
+
+.about-timeline-location {
+  font-size: 11px;
+  color: #B96A45;
+  font-family: var(--font-mono);
+  margin-bottom: 12px;
+  letter-spacing: 0.06em;
+}
+
+.about-timeline-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+}
+
+@media (max-width: 720px) {
+  .about-timeline {
+    display: block;
+  }
+
+  .about-timeline-line {
+    top: 56px;
+    bottom: 0;
+    left: calc(2rem + 28px);
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+
+  .about-timeline-step {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 2.5rem 5.5rem;
+    position: relative;
+  }
+
+  .about-timeline-circle-wrap {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin-bottom: 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  .about-timeline-meta {
+    justify-content: flex-start !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Partnerships Section
+   -------------------------------------------------------------------------- */
+.about-partners-section {
+  background-color: #FFFFFF;
+  padding: 6rem 2rem;
+}
+
+.about-partners-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.about-partners-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #3F7770;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.about-partners-heading {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: #173F3A;
+  margin-bottom: 3rem;
+}
+
+.about-partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.about-partner-card {
+  padding: 1.5rem;
+  border: 1px solid #E0DDD4;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.about-partner-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.about-partner-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background-color: #E8E5DC;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3F7770;
+}
+
+.about-partner-title {
+  font-weight: 600;
+  font-size: 15px;
+  color: #173F3A;
+  margin-bottom: 8px;
+}
+
+.about-partner-desc {
+  font-size: 13.5px;
+  color: #24312F;
+  line-height: 1.65;
+}
+
+/* --------------------------------------------------------------------------
+   Work with SAIIL / Call to Action Section
+   -------------------------------------------------------------------------- */
+.about-cta-section {
+  background-color: #173F3A;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.about-cta-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.about-cta-heading {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.about-cta-desc {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.about-cta-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #B96A45;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.about-cta-btn:hover {
+  background-color: #a25b39;
+}

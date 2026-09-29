@@ -1,0 +1,529 @@
+/* ==========================================================================
+   What We Do Styles
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Sections & Alternating Layouts
+   -------------------------------------------------------------------------- */
+.what-section {
+  padding: 6rem 2rem;
+}
+
+.what-section-bg-paper {
+  background-color: #F8F7F2;
+}
+
+.what-section-bg-white {
+  background-color: #FFFFFF;
+}
+
+.what-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.what-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .what-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.what-order-content-even {
+  order: 0;
+}
+
+.what-order-content-odd {
+  order: 2;
+}
+
+.what-order-visual-even {
+  order: 2;
+}
+
+.what-order-visual-odd {
+  order: 0;
+}
+
+@media (max-width: 900px) {
+  .what-order-content-even,
+  .what-order-content-odd {
+    order: 0;
+  }
+  .what-order-visual-even,
+  .what-order-visual-odd {
+    order: 1;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Feature Content
+   -------------------------------------------------------------------------- */
+.what-num-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.what-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #B96A45;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.what-title {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  color: #173F3A;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.what-sub {
+  font-size: 13px;
+  color: #B96A45;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
+}
+
+.what-desc {
+  font-size: 16px;
+  color: #24312F;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.what-detail-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.what-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14.5px;
+  color: #24312F;
+  line-height: 1.5;
+}
+
+.what-detail-icon {
+  margin-top: 2px;
+  flex-shrink: 0;
+  stroke: #3F7770;
+}
+
+.what-cta-wrap {
+  margin-top: 28px;
+}
+
+.what-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  background-color: #173F3A;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.what-cta-link:hover {
+  background-color: #24312F;
+}
+
+/* --------------------------------------------------------------------------
+   Visuals / Previews
+   -------------------------------------------------------------------------- */
+/* Visual 1: Interoperability Topology */
+.what-visual-topology {
+  background-color: #173F3A;
+  border-radius: 10px;
+  padding: 2rem;
+  min-height: 280px;
+}
+
+.what-visual-topology-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.what-visual-topology-svg {
+  width: 100%;
+  max-height: 220px;
+}
+
+/* Visual 2: Conformance Copilot Terminal */
+.what-visual-copilot {
+  background-color: #24312F;
+  border-radius: 10px;
+  padding: 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 2;
+}
+
+.what-visual-copilot-title {
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.what-visual-copilot-error-box {
+  padding: 10px 12px;
+  background-color: rgba(185, 106, 69, 0.15);
+  border: 1px solid rgba(185, 106, 69, 0.3);
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.what-visual-copilot-error-head {
+  color: #B96A45;
+  margin-bottom: 4px;
+}
+
+.what-visual-copilot-error-msg {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.what-visual-copilot-sug-box {
+  padding: 10px 12px;
+  background-color: rgba(63, 119, 112, 0.15);
+  border: 1px solid rgba(63, 119, 112, 0.3);
+  border-radius: 4px;
+}
+
+.what-visual-copilot-sug-head {
+  color: #3F7770;
+  margin-bottom: 6px;
+}
+
+.what-visual-copilot-sug-msg {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+}
+
+.what-visual-copilot-highlight {
+  color: #B88A3B;
+}
+
+/* Visual 3: Validation Output */
+.what-visual-output {
+  background-color: #F8F7F2;
+  border-radius: 10px;
+  padding: 1.5rem;
+  border: 1px solid #E0DDD4;
+}
+
+.what-visual-output-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #24312F;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.what-visual-output-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 6px 0;
+  border-bottom: 1px solid #E0DDD4;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.what-visual-output-row:last-child {
+  border-bottom: none;
+}
+
+.what-visual-output-icon {
+  flex-shrink: 0;
+}
+
+.what-status-pass {
+  color: #27C93F;
+}
+
+.what-status-error {
+  color: #B96A45;
+}
+
+.what-status-warn {
+  color: #B88A3B;
+}
+
+.what-visual-output-text {
+  color: #24312F;
+}
+
+/* --------------------------------------------------------------------------
+   Methodology (7T + Innovation) Section
+   -------------------------------------------------------------------------- */
+.what-methodology-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #B96A45;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.what-methodology-heading {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  color: #173F3A;
+  margin-bottom: 20px;
+}
+
+.what-methodology-intro {
+  font-size: 16px;
+  color: #24312F;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  max-width: 680px;
+}
+
+.what-tier-block {
+  margin-bottom: 2.5rem;
+}
+
+.what-tier-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.25rem;
+}
+
+.what-tier-tag-ochre {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #B88A3B;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.what-tier-tag-teal {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #3F7770;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.what-tier-line-ochre {
+  flex: 1;
+  height: 1px;
+  background-color: rgba(184, 138, 59, 0.3);
+}
+
+.what-tier-line-teal {
+  flex: 1;
+  height: 1px;
+  background-color: rgba(63, 119, 112, 0.3);
+}
+
+.what-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.what-service-card {
+  padding: 1.5rem;
+  background-color: #FFFFFF;
+  border: 1px solid #E0DDD4;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.what-service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.what-service-card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.what-service-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.what-service-num-ochre {
+  color: #B88A3B;
+}
+
+.what-service-num-teal {
+  color: #3F7770;
+}
+
+.what-service-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: #173F3A;
+}
+
+.what-service-desc {
+  font-size: 14px;
+  color: #24312F;
+  line-height: 1.7;
+  flex: 1;
+}
+
+/* Innovation Core Pillar Card */
+.what-innovation-card {
+  padding: 2rem;
+  background-color: #173F3A;
+  border: 1px solid rgba(185, 106, 69, 0.3);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .what-innovation-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+.what-innovation-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: rgba(185, 106, 69, 0.15);
+  border: 1.5px solid #B96A45;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.what-innovation-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.what-innovation-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #B96A45;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.what-innovation-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: #FFFFFF;
+}
+
+.what-innovation-desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   CTA Section
+   -------------------------------------------------------------------------- */
+.what-cta-section {
+  background-color: #173F3A;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.what-cta-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.what-cta-heading {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.what-cta-desc {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 32px;
+}
+
+.what-cta-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.what-cta-primary {
+  padding: 12px 24px;
+  background-color: #B96A45;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.what-cta-primary:hover {
+  background-color: #a25b39;
+}
+
+.what-cta-secondary {
+  padding: 12px 24px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.what-cta-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

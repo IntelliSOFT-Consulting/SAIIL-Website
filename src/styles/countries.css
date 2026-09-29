@@ -1,0 +1,300 @@
+/* ==========================================================================
+   Countries & Partners Styles
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Geographic Reach Section
+   -------------------------------------------------------------------------- */
+.countries-reach-section {
+  background-color: #F8F7F2;
+  padding: 6rem 2rem;
+}
+
+.countries-reach-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.countries-reach-layout {
+  display: grid;
+  grid-template-columns: 4fr 3fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+@media (max-width: 760px) {
+  .countries-reach-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.countries-reach-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #3F7770;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.countries-reach-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: #173F3A;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.countries-reach-text {
+  font-size: 16px;
+  color: #24312F;
+  line-height: 1.75;
+  max-width: 520px;
+}
+
+.countries-reach-legend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  font-size: 13px;
+  color: #24312F;
+}
+
+.countries-reach-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background-color: #B96A45;
+  display: inline-block;
+}
+
+.countries-reach-map-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E0DDD4;
+  border-radius: 12px;
+  padding: 3rem;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.countries-reach-map-img {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* --------------------------------------------------------------------------
+   Country Outlines Grid
+   -------------------------------------------------------------------------- */
+.countries-grid-section {
+  background-color: #E8E5DC;
+  padding: 6rem 2rem;
+}
+
+.countries-grid-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.countries-grid-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #3F7770;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.countries-grid-heading {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: #173F3A;
+  margin-bottom: 14px;
+}
+
+.countries-grid-intro {
+  font-size: 16px;
+  color: #24312F;
+  line-height: 1.75;
+  margin-bottom: 3rem;
+  max-width: 680px;
+}
+
+.saiil-country-outlines,
+.countries-outlines-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+@media (max-width: 760px) {
+  .saiil-country-outlines,
+  .countries-outlines-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.countries-card {
+  background-color: #F8F7F2;
+  border: 1px solid #D5D2C8;
+  border-radius: 10px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.countries-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.saiil-country-map,
+.countries-map-img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 1.25rem;
+  filter: brightness(0) saturate(100%) invert(47%) sepia(27%) saturate(1375%) hue-rotate(330deg) brightness(92%) contrast(84%);
+}
+
+.countries-card-name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: #173F3A;
+}
+
+/* --------------------------------------------------------------------------
+   Partnership Groups Section
+   -------------------------------------------------------------------------- */
+.countries-partners-section {
+  background-color: #FFFFFF;
+  padding: 6rem 2rem;
+}
+
+.countries-partners-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.countries-partners-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #3F7770;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.countries-partners-heading {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: #173F3A;
+  margin-bottom: 14px;
+}
+
+.countries-partners-intro {
+  font-size: 16px;
+  color: #24312F;
+  line-height: 1.75;
+  max-width: 760px;
+  margin-bottom: 3rem;
+}
+
+.saiil-partnership-groups,
+.countries-partnership-groups {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 760px) {
+  .saiil-partnership-groups,
+  .countries-partnership-groups {
+    grid-template-columns: 1fr;
+  }
+}
+
+.countries-partner-group {
+  border: 1px solid #E0DDD4;
+  border-radius: 10px;
+  padding: 2rem;
+  background-color: #F8F7F2;
+}
+
+.countries-partner-group-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  color: #173F3A;
+  margin-bottom: 1.25rem;
+}
+
+.countries-partner-orgs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.countries-partner-org-badge {
+  padding: 1rem;
+  background-color: #FFFFFF;
+  border: 1px solid #E0DDD4;
+  border-radius: 6px;
+  color: #24312F;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   CTA Section
+   -------------------------------------------------------------------------- */
+.countries-cta-section {
+  background-color: #173F3A;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.countries-cta-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.countries-cta-heading {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.countries-cta-desc {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.countries-cta-btn {
+  padding: 12px 24px;
+  background-color: #B96A45;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.countries-cta-btn:hover {
+  background-color: #a25b39;
+}
