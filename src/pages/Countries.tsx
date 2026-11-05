@@ -19,22 +19,6 @@ const COUNTRIES: CountryItem[] = [
   { name: 'Burkina Faso', image: BURKINA_FASO_OUTLINE }
 ];
 
-interface PartnershipGroup {
-  title: string;
-  organisations: string[];
-}
-
-const PARTNERSHIP_GROUPS: PartnershipGroup[] = [
-  {
-    title: 'Network organisations',
-    organisations: ['HELINA', 'AFENET']
-  },
-  {
-    title: 'Regional and Member State organisations',
-    organisations: ['Africa CDC', 'WHO AFRO', 'East African Community (EAC)', 'IGAD', 'SADC']
-  }
-];
-
 function CountryOutline({ country }: { country: CountryItem }) {
   return (
     <img
@@ -96,32 +80,6 @@ export function Countries() {
               <div key={c.name} className="countries-card">
                 <CountryOutline country={c} />
                 <div className="countries-card-name">{c.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Future Partnerships */}
-      <section className="countries-partners-section">
-        <div className="countries-partners-container">
-          <span className="countries-partners-eyebrow">Partnership Outlook</span>
-          <h2 className="countries-partners-heading">Future partnerships</h2>
-          <p className="countries-partners-intro">
-            SAIIL looks forward to formalising partnerships with network organisations and regional African Member State organisations.
-          </p>
-
-          <div className="countries-partnership-groups">
-            {PARTNERSHIP_GROUPS.map((group) => (
-              <div key={group.title} className="countries-partner-group">
-                <h3 className="countries-partner-group-title">{group.title}</h3>
-                <div className="countries-partner-orgs-grid">
-                  {group.organisations.map((org) => (
-                    <div key={org} className="countries-partner-org-badge">
-                      {org}
-                    </div>
-                  ))}
-                </div>
               </div>
             ))}
           </div>

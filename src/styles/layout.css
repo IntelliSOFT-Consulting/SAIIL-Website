@@ -400,3 +400,13 @@
     grid-column: span 1;
   }
 }
+
+.brand-logo {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.brand-logo-footer {
+  height: 72px;
+}

@@ -56,7 +56,7 @@ export const Navbar: React.FC = () => {
       <div className="navbar-container">
         <div className="navbar-inner">
           <Link to="/" className="navbar-logo">
-            SAIIL
+            <img src="/Logo/saiil-logo-compact-reversed.png" alt="SAIIL" className="brand-logo" />
           </Link>
 
           <nav className="navbar-links saiil-desktop">

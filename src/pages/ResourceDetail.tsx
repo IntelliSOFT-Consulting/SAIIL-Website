@@ -30,7 +30,7 @@ const DOC_INFO = [
   { label: 'Type', value: 'Concept Note' },
   { label: 'Published', value: '2026' },
   { label: 'Pages', value: '21' },
-  { label: 'Status', value: 'Current' },
+  { label: 'Status', value: 'Draft' },
   { label: 'Publisher', value: 'SAIIL Africa' },
   { label: 'Language', value: 'English' }
 ];
