@@ -419,7 +419,7 @@ export const Home: React.FC = () => {
     <div>
       <PageHero
         eyebrow="Standards · AI · Interoperability"
-        headline="Africa's interoperability and innovation engine for digital health."
+        headline="Africa's interoperability, intelligence and innovation engine for digital health."
         intro="SAIIL brings together standards, technology, testing and expertise to help health systems communicate, exchange data and work better together."
         button={{ label: 'Explore SAIIL', href: '/what-we-do' }}
         imageUrl="https://images.unsplash.com/photo-1666886573531-48d2e3c2b684?w=1600&h=700&fit=crop&auto=format"

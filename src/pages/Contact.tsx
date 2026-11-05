@@ -22,7 +22,7 @@ interface ContactFormState {
 }
 
 const CONTACT_API_URL = '/api/contact.php';
-const CONTACT_EMAIL = 'davidmukungi@saiil.africa';
+const CONTACT_EMAIL = 'dmukungi@intellisoftkenya.com';
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -254,8 +254,7 @@ export function Contact() {
             </div>
 
             {[
-              { label: 'General Enquiries', value: 'davidmukungi@saiil.africa' },
-              { label: 'Test Bed Support', value: 'davidmukungi@saiil.africa' }
+              { label: 'Enquiries', value: 'dmukungi@intellisoftkenya.com' }
             ].map((contact, idx) => (
               <div key={idx} className="contact-info-item">
                 <div className="contact-info-label">{contact.label}</div>
@@ -268,7 +267,7 @@ export function Contact() {
             <div className="contact-notice-box">
               <div className="contact-notice-title">Response Time</div>
               <p className="contact-notice-text">
-                SAIIL responds to all enquiries within two working days. For urgent Test Bed support, email davidmukungi@saiil.africa with the subject line [URGENT].
+                SAIIL responds to all enquiries within two working days.
               </p>
             </div>
           </div>

@@ -94,7 +94,7 @@ export function About() {
     <div className="about-page">
       <PageHero
         eyebrow="About SAIIL"
-        headline="Africa's interoperability and innovation engine for digital health."
+        headline="Africa's interoperability, intelligence and innovation engine for digital health."
         intro="SAIIL is a technical standards organisation working across Africa to make digital health data interoperable: reliably, securely and at scale."
         imageUrl="https://images.unsplash.com/photo-1683109944202-e74e2adbc8cf?w=1600&h=700&fit=crop&auto=format"
       />
@@ -104,7 +104,7 @@ export function About() {
         <div className="about-intro-container">
           <div className="about-intro-content">
             <span className="about-intro-eyebrow">Who We Are</span>
-            <h2 className="about-intro-heading">An African standards and interoperability laboratory.</h2>
+            <h2 className="about-intro-heading">An African AI, standards and interoperability laboratory.</h2>
             <p className="about-intro-p">
               The Standards, AI &amp; Interoperability Lab (SAIIL) was founded to address a specific and persistent failure in African digital health: well-intentioned systems that cannot exchange data.
             </p>

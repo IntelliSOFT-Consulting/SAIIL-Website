@@ -8,9 +8,7 @@ export const Footer: React.FC = () => {
         <div className="footer-grid">
           <div className="footer-col-brand">
             <div className="footer-brand-title">
-              <span className="footer-brand-name">
-                SAIIL
-              </span>
+              <img src="/Logo/saiil-logo-compact-reversed.png" alt="SAIIL" className="brand-logo brand-logo-footer" />
             </div>
             <p className="footer-brand-desc">
               Standards, AI &amp; Interoperability Lab. Building the infrastructure for connected health systems across
