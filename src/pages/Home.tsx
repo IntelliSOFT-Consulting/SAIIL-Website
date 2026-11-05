@@ -688,6 +688,13 @@ export const Home: React.FC = () => {
               </span>
             ))}
           </div>
+
+          <div className="home-reach-members">
+            <span className="home-reach-eyebrow">Member organisations</span>
+            <div className="home-reach-members-logos">
+              <img src="/Partners/hl7.jpeg" alt="HL7" />
+            </div>
+          </div>
         </div>
       </section>
 
