@@ -56,7 +56,7 @@ export const Navbar: React.FC = () => {
       <div className="navbar-container">
         <div className="navbar-inner">
           <Link to="/" className="navbar-logo">
-            <img src="/Logo/saiil-logo-compact-reversed.png" alt="SAIIL" className="brand-logo" />
+            <img src="/Logo/saiil-logo-compact-reversed.svg" alt="SAIIL" className="brand-logo" />
           </Link>
 
           <nav className="navbar-links saiil-desktop">
@@ -86,6 +86,8 @@ export const Navbar: React.FC = () => {
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               className="navbar-mobile-toggle saiil-mobile"
               aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
             >
               <div className="hamburger-box">
                 {[0, 1, 2].map((idx) => (
@@ -101,7 +103,7 @@ export const Navbar: React.FC = () => {
       </div>
 
       {mobileMenuOpen && (
-        <div className="navbar-mobile-menu">
+        <div id="mobile-navigation" className="navbar-mobile-menu">
           {navItems.map((item) => {
             const active = isActive(item.href);
             return (
@@ -109,12 +111,13 @@ export const Navbar: React.FC = () => {
                 key={item.href}
                 to={item.href}
                 className={`navbar-mobile-link ${active ? 'active' : ''}`}
+                onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
               </Link>
             );
           })}
-          <Link to="/test-bed-access" className="btn-test-bed mobile">
+          <Link to="/test-bed-access" className="btn-test-bed mobile" onClick={() => setMobileMenuOpen(false)}>
             Access Test Bed
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M5 12h14M12 5l7 7-7 7" />

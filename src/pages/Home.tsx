@@ -9,9 +9,9 @@ interface Stat {
 
 const stats: Stat[] = [
   { value: '4', label: 'Expansion Countries' },
-  { value: '4+', label: 'Systems Tested' },
+  { value: '37', label: 'Systems Tested' },
   { value: '8+', label: 'Implementation Guides Published' },
-  { value: '10', label: 'Technical Staff Trained' },
+  { value: '1,600+', label: 'Trained in FHIR Fundamentals' },
 ];
 
 interface FrameworkService {
@@ -25,13 +25,13 @@ const frameworkServices: FrameworkService[] = [
   {
     id: 'T1',
     name: 'Testing',
-    desc: 'Conformance validation against FHIR, IHE and OpenHIE, with an AI copilot that explains failures.',
+    desc: 'Conformance validation against FHIR, IHE and OpenHIE architectural specifications, with AI assistance.',
     isNew: false,
   },
   {
     id: 'T2',
     name: 'Training',
-    desc: 'A phased FHIR curriculum, from fundamentals to production, through blended cohorts.',
+    desc: 'A competency-based curriculum, innovatively delivered. The priority standard is FHIR.',
     isNew: false,
   },
   {
@@ -61,7 +61,7 @@ const frameworkServices: FrameworkService[] = [
   {
     id: 'T7',
     name: 'Translation',
-    desc: 'Terminology mapping and localised guides and curricula in French, Portuguese, Arabic and Kiswahili.',
+    desc: 'Terminology mapping and localised guides in French, Portuguese, Arabic and Kiswahili.',
     isNew: true,
   },
 ];
@@ -82,7 +82,7 @@ const serviceGroups: { group: string; accentClass: string; accentColor: string; 
       {
         id: 'T1',
         title: 'Testing',
-        desc: 'Conformance validation against FHIR, IHE and OpenHIE, with an AI copilot that explains failures.',
+        desc: 'Conformance validation against FHIR, IHE and OpenHIE architectural specifications, with AI assistance.',
         icon: (
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9" />
@@ -94,7 +94,7 @@ const serviceGroups: { group: string; accentClass: string; accentColor: string; 
       {
         id: 'T2',
         title: 'Training',
-        desc: 'A phased FHIR curriculum, from fundamentals to production, through blended cohorts.',
+        desc: 'A competency-based curriculum, innovatively delivered. The priority standard is FHIR.',
         icon: (
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
@@ -248,49 +248,6 @@ const journeySteps: JourneyStep[] = [
 
 const countries = ['Rwanda', 'Zambia', 'Ethiopia', 'Burkina Faso'];
 
-const BeforeAfterCard: React.FC = () => {
-  return (
-    <div className="before-after-card">
-      <div className="before-after-title">
-        Before vs After
-      </div>
-      <div className="before-after-flow">
-        <div>
-          <div className="before-after-col-header fragmented">
-            Fragmented
-          </div>
-          {['EMR A', 'Lab System', 'HMIS', 'Pharmacy'].map((system, i) => (
-            <div key={i} className="before-after-pill">
-              {system}
-            </div>
-          ))}
-        </div>
-
-        <div className="before-after-arrow">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </div>
-
-        <div>
-          <div className="before-after-col-header connected">
-            Connected
-          </div>
-          {['EMR A', 'Lab System', 'HMIS', 'Pharmacy'].map((system, i) => (
-            <div key={i} className="before-after-pill connected">
-              {system}
-              <span className="status-dot" />
-            </div>
-          ))}
-          <div className="before-after-hub">
-            FHIR Hub
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const FrameworkDiagram: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -416,7 +373,7 @@ const FrameworkDiagram: React.FC = () => {
 
 export const Home: React.FC = () => {
   return (
-    <div>
+    <div className="home-page">
       <PageHero
         eyebrow="Standards · AI · Interoperability"
         headline="Africa's interoperability, intelligence and innovation engine for digital health."
@@ -440,6 +397,9 @@ export const Home: React.FC = () => {
               </div>
             ))}
           </div>
+          <p className="home-stats-note">
+            1,600+ people trained in FHIR fundamentals under the Africa on FHIR initiative.
+          </p>
         </div>
       </section>
 
@@ -464,7 +424,14 @@ export const Home: React.FC = () => {
               </p>
             </div>
 
-            <BeforeAfterCard />
+            <img
+              className="home-challenge-image"
+              src="/assets/interoperability-before-after.png"
+              alt="Before and after interoperability: fragmented EMR, laboratory, HMIS and pharmacy systems become connected through a FHIR Hub."
+              width={469}
+              height={347}
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
@@ -486,7 +453,7 @@ export const Home: React.FC = () => {
           </div>
 
           <p className="home-framework-caption">
-            Innovation connects all seven: turning what we learn into new tools, solutions and ventures.
+            Innovation connects all seven: turning what we know and learn into new tools, solutions and ventures.
           </p>
 
           {/* Service Groups (Foundational & New) */}
@@ -560,7 +527,7 @@ export const Home: React.FC = () => {
               Our Journey
             </span>
             <h2 className="home-journey-heading">
-              From a standards lab to Africa's interoperability engine.
+              From a standards and interoperability lab to Africa's health intelligence engine.
             </h2>
           </div>
 
@@ -702,7 +669,7 @@ export const Home: React.FC = () => {
       <section className="home-cta-section">
         <div className="home-cta-container">
           <h2 className="home-cta-heading">
-            Ready to build systems that actually talk to each other?
+            Ready to build systems that intelligently interact with each other?
           </h2>
           <p className="home-cta-desc">
             Whether you are an MoH, an implementer, a developer or a funder, SAIIL has the tools, standards and
