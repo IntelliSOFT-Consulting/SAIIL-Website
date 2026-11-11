@@ -27,7 +27,7 @@ if ($method !== 'POST') {
 define('SAIIL_APP', true);
 $config = [
     'smtp_host' => 'smtp.gmail.com',
-    'smtp_port' => 465,
+    'smtp_port' => 587,
     'smtp_user' => 'methewwahome@gmail.com',
     'smtp_pass' => '', // Set your 16-character Google App Password in config.php or environment
     'to_email'  => 'davidmukungi@saiil.africa',
@@ -135,10 +135,15 @@ if (!empty($smtpPass)) {
 }
 
 /**
- * Direct Google SMTP over SSL
+ * Direct Google SMTP: implicit SSL on port 465, STARTTLS on any other port (e.g. 587).
+ * Connects over IPv4 because some hosts have no IPv6 route.
  */
 function sendGoogleSmtp($host, $port, $user, $pass, $to, $fromName, $subject, $bodyText, $replyTo) {
-    $socket = @stream_socket_client("ssl://{$host}:{$port}", $errno, $errstr, 12);
+    $ip = gethostbyname($host);
+    $implicitTls = ($port === 465);
+    $context = stream_context_create(['ssl' => ['peer_name' => $host]]);
+    $scheme = $implicitTls ? 'ssl' : 'tcp';
+    $socket = @stream_socket_client("{$scheme}://{$ip}:{$port}", $errno, $errstr, 12, STREAM_CLIENT_CONNECT, $context);
     if (!$socket) {
         return ['ok' => false, 'error' => "Cannot connect to SMTP server: {$errstr} ({$errno})"];
     }
@@ -170,6 +175,17 @@ function sendGoogleSmtp($host, $port, $user, $pass, $to, $fromName, $subject, $b
 
     $r = $send("EHLO localhost", 250);
     if (!$r['ok']) { fclose($socket); return $r; }
+
+    if (!$implicitTls) {
+        $r = $send("STARTTLS", 220);
+        if (!$r['ok']) { fclose($socket); return $r; }
+        if (!stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT | STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT)) {
+            fclose($socket);
+            return ['ok' => false, 'error' => 'Failed to start TLS with SMTP server'];
+        }
+        $r = $send("EHLO localhost", 250);
+        if (!$r['ok']) { fclose($socket); return $r; }
+    }
 
     $r = $send("AUTH LOGIN", 334);
     if (!$r['ok']) { fclose($socket); return $r; }

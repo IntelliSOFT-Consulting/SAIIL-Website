@@ -17,7 +17,7 @@ if (!defined('SAIIL_APP')) {
 return [
     // Google SMTP Settings
     'smtp_host' => 'smtp.gmail.com',
-    'smtp_port' => 465,
+    'smtp_port' => 587,
     'smtp_user' => 'davidmukungi@saiil.africa',
     
     // 16-character Google App Password (e.g., 'abcd efgh ijkl mnop')
