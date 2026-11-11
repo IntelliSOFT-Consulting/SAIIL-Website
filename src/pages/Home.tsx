@@ -248,49 +248,6 @@ const journeySteps: JourneyStep[] = [
 
 const countries = ['Rwanda', 'Zambia', 'Ethiopia', 'Burkina Faso'];
 
-const BeforeAfterCard: React.FC = () => {
-  return (
-    <div className="before-after-card">
-      <div className="before-after-title">
-        Before vs After
-      </div>
-      <div className="before-after-flow">
-        <div>
-          <div className="before-after-col-header fragmented">
-            Fragmented
-          </div>
-          {['EMR A', 'Lab System', 'HMIS', 'Pharmacy'].map((system, i) => (
-            <div key={i} className="before-after-pill">
-              {system}
-            </div>
-          ))}
-        </div>
-
-        <div className="before-after-arrow">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </div>
-
-        <div>
-          <div className="before-after-col-header connected">
-            Connected
-          </div>
-          {['EMR A', 'Lab System', 'HMIS', 'Pharmacy'].map((system, i) => (
-            <div key={i} className="before-after-pill connected">
-              {system}
-              <span className="status-dot" />
-            </div>
-          ))}
-          <div className="before-after-hub">
-            FHIR Hub
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const FrameworkDiagram: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -467,7 +424,14 @@ export const Home: React.FC = () => {
               </p>
             </div>
 
-            <BeforeAfterCard />
+            <img
+              className="home-challenge-image"
+              src="/assets/interoperability-before-after.png"
+              alt="Before and after interoperability: fragmented EMR, laboratory, HMIS and pharmacy systems become connected through a FHIR Hub."
+              width={469}
+              height={347}
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
