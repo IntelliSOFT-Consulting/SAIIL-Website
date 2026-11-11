@@ -7,7 +7,6 @@ import { WhatWeDo } from './pages/WhatWeDo';
 import { TestBed } from './pages/TestBed';
 import { TestBedAccess } from './pages/TestBedAccess';
 import { Resources } from './pages/Resources';
-import { ResourceDetail } from './pages/ResourceDetail';
 import { Countries } from './pages/Countries';
 import { Contact } from './pages/Contact';
 
@@ -33,7 +32,6 @@ export const App: React.FC = () => {
           <Route path="test-bed" element={<TestBed />} />
           <Route path="test-bed-access" element={<TestBedAccess />} />
           <Route path="resources" element={<Resources />} />
-          <Route path="resources/detail" element={<ResourceDetail />} />
           <Route path="countries" element={<Countries />} />
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<Home />} />

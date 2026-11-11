@@ -2,6 +2,12 @@
    Contact Page Styles
    ========================================================================== */
 
+.contact-page h1,
+.contact-page h2,
+.contact-page h3 {
+  font-weight: 400;
+}
+
 .contact-section {
   background-color: #F8F7F2;
   padding: 5rem 2rem;
@@ -75,8 +81,7 @@
 }
 
 .contact-field {
-  display: flex;
-  flex-direction: column;
+  display: block;
 }
 
 .contact-label {
@@ -112,6 +117,7 @@
   outline: none;
   background-color: #F8F7F2;
   font-family: inherit;
+  line-height: 1.5;
   transition: border-color 0.15s ease;
 }
 
@@ -153,6 +159,7 @@
   color: #FFFFFF;
   font-weight: 600;
   font-size: 15px;
+  line-height: 1.5;
   border-radius: 4px;
   border: none;
   cursor: pointer;
