@@ -106,7 +106,7 @@ export function About() {
             <span className="about-intro-eyebrow">Who We Are</span>
             <h2 className="about-intro-heading">An African AI, standards and interoperability laboratory.</h2>
             <p className="about-intro-p">
-              The Standards, AI &amp; Interoperability Lab (SAIIL) was founded to address a specific and persistent failure in African digital health: well-intentioned systems that cannot exchange data.
+              The Standards, Artificial Intelligence &amp; Interoperability Lab (SAIIL) was founded to address a specific and persistent failure in African digital health: well-intentioned systems that cannot exchange data.
             </p>
             <p className="about-intro-p">
               We work at the implementation layer: building conformance testing infrastructure, shared tooling, training programmes and technical guidance that enable health systems to interoperate in practice, not just in principle.
@@ -132,7 +132,7 @@ export function About() {
         <div className="about-journey-container">
           <div className="about-journey-header">
             <span className="about-journey-eyebrow">Our Journey</span>
-            <h2 className="about-journey-heading">From a standards lab to Africa's interoperability engine.</h2>
+            <h2 className="about-journey-heading">From a standards and interoperability lab to Africa's health intelligence engine.</h2>
           </div>
 
           <div className="about-timeline">
