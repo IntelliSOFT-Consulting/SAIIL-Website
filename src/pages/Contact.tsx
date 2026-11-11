@@ -22,7 +22,7 @@ interface ContactFormState {
 }
 
 const CONTACT_API_URL = '/api/contact.php';
-const CONTACT_EMAIL = 'dmukungi@intellisoftkenya.com';
+const CONTACT_EMAIL = 'davidmukungi@saiil.africa';
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -81,7 +81,7 @@ export function Contact() {
     <div className="contact-page">
       <PageHero
         eyebrow="Contact"
-        headline="Let's build systems that talk to each other."
+        headline="Let's build systems that intelligently interact with each other."
         intro="Whether you want to access the Test Bed, discuss a country programme or explore a partnership, the SAIIL team is happy to talk."
         imageUrl="https://images.unsplash.com/photo-1600427652630-f97cc4db10cd?w=1600&h=700&fit=crop&auto=format"
       />
@@ -89,7 +89,7 @@ export function Contact() {
       <section className="contact-section">
         <div className="contact-container">
           {submitted ? (
-            <div className="contact-success-card">
+            <div className="contact-success-card" role="status">
               <div className="contact-success-icon-wrap">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" strokeWidth="2">
                   <path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
@@ -119,20 +119,21 @@ export function Contact() {
             </div>
           ) : (
             <div className="contact-form-card">
-              <form onSubmit={handleSubmit} className="contact-form">
+              <form onSubmit={handleSubmit} className="contact-form" aria-busy={isSubmitting}>
                 <input type="text" name="_honey" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
 
                 {error && (
-                  <div className="contact-error-box">
+                  <div className="contact-error-box" role="alert">
                     <span>{error}</span>{' '}
                     <a href={`mailto:${CONTACT_EMAIL}`}>Send email directly &rarr;</a>
                   </div>
                 )}
 
                 <div className="contact-field">
-                  <label className="contact-label">I am contacting SAIIL as</label>
+                  <label htmlFor="contact-audience" className="contact-label">I am contacting SAIIL as</label>
                   <div className="contact-select-wrap">
                     <select
+                      id="contact-audience"
                       name="audience"
                       value={form.audience}
                       onChange={(e) => setForm((prev) => ({ ...prev, audience: e.target.value }))}
@@ -155,8 +156,10 @@ export function Contact() {
 
                 <div className="contact-grid-row">
                   <div className="contact-field">
-                    <label className="contact-label">Name</label>
+                    <label htmlFor="contact-name" className="contact-label">Name</label>
                     <input
+                      id="contact-name"
+                      autoComplete="name"
                       name="name"
                       value={form.name}
                       onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
@@ -166,8 +169,10 @@ export function Contact() {
                     />
                   </div>
                   <div className="contact-field">
-                    <label className="contact-label">Organisation</label>
+                    <label htmlFor="contact-org" className="contact-label">Organisation</label>
                     <input
+                      id="contact-org"
+                      autoComplete="organization"
                       name="org"
                       value={form.org}
                       onChange={(e) => setForm((prev) => ({ ...prev, org: e.target.value }))}
@@ -178,8 +183,10 @@ export function Contact() {
                 </div>
 
                 <div className="contact-field">
-                  <label className="contact-label">Email</label>
+                  <label htmlFor="contact-email" className="contact-label">Email</label>
                   <input
+                    id="contact-email"
+                    autoComplete="email"
                     name="email"
                     type="email"
                     value={form.email}
@@ -191,9 +198,10 @@ export function Contact() {
                 </div>
 
                 <div className="contact-field">
-                  <label className="contact-label">Area of interest</label>
+                  <label htmlFor="contact-interest" className="contact-label">Area of interest</label>
                   <div className="contact-select-wrap">
                     <select
+                      id="contact-interest"
                       name="interest"
                       value={form.interest}
                       onChange={(e) => setForm((prev) => ({ ...prev, interest: e.target.value }))}
@@ -213,8 +221,9 @@ export function Contact() {
                 </div>
 
                 <div className="contact-field">
-                  <label className="contact-label">Message</label>
+                  <label htmlFor="contact-message" className="contact-label">Message</label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     value={form.message}
                     onChange={(e) => setForm((prev) => ({ ...prev, message: e.target.value }))}
@@ -254,7 +263,7 @@ export function Contact() {
             </div>
 
             {[
-              { label: 'Enquiries', value: 'dmukungi@intellisoftkenya.com' }
+              { label: 'Enquiries', value: CONTACT_EMAIL }
             ].map((contact, idx) => (
               <div key={idx} className="contact-info-item">
                 <div className="contact-info-label">{contact.label}</div>
@@ -267,7 +276,7 @@ export function Contact() {
             <div className="contact-notice-box">
               <div className="contact-notice-title">Response Time</div>
               <p className="contact-notice-text">
-                SAIIL responds to all enquiries within two working days.
+                SAIIL responds to all enquiries within two working days. For urgent Test Bed support, email {CONTACT_EMAIL} with the subject line [URGENT].
               </p>
             </div>
           </div>

@@ -1,29 +1,17 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { PageHero } from '../components/PageHero';
 
 interface ResourceItem {
   type: string;
   title: string;
-  sub?: string;
   desc: string;
   date: string;
   cat: string;
-  featured?: boolean;
 }
 
 const CATEGORIES = ['All', 'Concept Notes', 'Implementation Guides', 'Technical', 'Documentation'];
 
 const RESOURCES_DATA: ResourceItem[] = [
-  {
-    type: 'Concept Note',
-    title: 'SAIIL Next Generation: Concept Note',
-    sub: "From a Standards Lab to Africa's Interoperability & Innovation Engine",
-    desc: "A 21-page concept note outlining SAIIL's evolution from a four-service standards lab to Africa's interoperability and innovation engine, introducing the 7T + Innovation framework and positioning SAIIL within Digital Public Infrastructure for Health.",
-    date: '2026 · 21 pages',
-    cat: 'Concept Notes',
-    featured: true
-  },
   {
     type: 'Implementation Guide',
     title: 'Zambia Digital Health Implementation Guide',
@@ -97,13 +85,13 @@ export function Resources() {
   const [selectedCat, setSelectedCat] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const featured = RESOURCES_DATA[0];
-  const filteredList = RESOURCES_DATA.slice(1).filter((item) => {
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const filteredList = RESOURCES_DATA.filter((item) => {
     const matchesCat = selectedCat === 'All' || item.cat === selectedCat;
     const matchesQuery =
-      searchQuery === '' ||
-      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.desc.toLowerCase().includes(searchQuery.toLowerCase());
+      normalizedQuery === '' ||
+      item.title.toLowerCase().includes(normalizedQuery) ||
+      item.desc.toLowerCase().includes(normalizedQuery);
     return matchesCat && matchesQuery;
   });
 
@@ -113,45 +101,11 @@ export function Resources() {
         eyebrow="Resource Library"
         headline="Resources"
         intro="Guides, concept notes, technical documentation and learning resources from SAIIL."
-        button={{
-          label: 'Read the Concept Note',
-          href: '/resources/detail'
-        }}
         imageUrl="https://images.unsplash.com/photo-1707157284454-553ef0a4ed0d?w=1600&h=700&fit=crop&auto=format"
       />
 
       <section className="resources-section">
         <div className="resources-container">
-          {/* Featured Resource Banner */}
-          <div className="resources-featured-card">
-            <div>
-              <div className="resources-featured-tags">
-                <span className="resources-featured-pill">Featured</span>
-                <span className="resources-featured-type">{featured.type}</span>
-                <span className="resources-featured-date">{featured.date}</span>
-              </div>
-              <h2 className="resources-featured-title">{featured.title}</h2>
-              <p className="resources-featured-sub">{featured.sub}</p>
-              <p className="resources-featured-desc">{featured.desc}</p>
-              <Link to="/resources/detail" className="resources-featured-btn">
-                Read Online
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-
-            <div className="resources-featured-toc">
-              <div className="resources-toc-head">Contents</div>
-              <div>01 The case for SAIIL 2.0</div>
-              <div>02 The 7T Framework</div>
-              <div>03 Innovation as core</div>
-              <div>04 DPI-H positioning</div>
-              <div>05 Strategic roadmap</div>
-              <div className="resources-toc-meta">21 pages · 2026</div>
-            </div>
-          </div>
-
           {/* Filter Toolbar */}
           <div className="resources-toolbar">
             <div className="resources-search-wrap">
@@ -160,6 +114,8 @@ export function Resources() {
                 <path d="m21 21-4.35-4.35" />
               </svg>
               <input
+                type="search"
+                aria-label="Search resources"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search resources..."
@@ -171,6 +127,8 @@ export function Resources() {
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat}
+                  type="button"
+                  aria-pressed={selectedCat === cat}
                   onClick={() => setSelectedCat(cat)}
                   className={`resources-cat-btn ${
                     selectedCat === cat ? 'resources-cat-btn-active' : 'resources-cat-btn-inactive'
@@ -183,23 +141,26 @@ export function Resources() {
           </div>
 
           {/* Resources Grid */}
-          <div className="resources-grid">
-            {filteredList.map((item, idx) => (
-              <div key={idx} className="resource-card">
+          <div className="resources-grid" aria-live="polite" aria-atomic="true">
+            {filteredList.map((item) => (
+              <article key={item.title} className="resource-card">
                 <div className="resource-card-meta">
                   <span className={getBadgeClass(item.type)}>{item.type}</span>
                   <span className="resource-card-date">{item.date}</span>
                 </div>
                 <h3 className="resource-card-title">{item.title}</h3>
                 <p className="resource-card-desc">{item.desc}</p>
-                <Link to="/resources/detail" className="resource-card-btn">
-                  Read Online
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
+              </article>
             ))}
+            {filteredList.length === 0 && (
+              <div className="resources-empty">
+                <h2>No resources found</h2>
+                <p>Try another search or choose a different category.</p>
+                <button type="button" onClick={() => { setSearchQuery(''); setSelectedCat('All'); }}>
+                  Clear filters
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -2,6 +2,11 @@
    Test Bed Styles
    ========================================================================== */
 
+.testbed-page h1,
+.testbed-page h2 {
+  font-weight: 400;
+}
+
 /* --------------------------------------------------------------------------
    Features Grid
    -------------------------------------------------------------------------- */
@@ -301,7 +306,7 @@
 .testbed-sidebar-tab-active {
   color: #173F3A;
   background-color: #E8E5DC;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .testbed-sidebar-tab-inactive {
@@ -368,10 +373,6 @@
   border-bottom: 1px solid #F8F7F2;
 }
 
-.testbed-result-item:last-child {
-  border-bottom: none;
-}
-
 .testbed-result-item-icon {
   font-size: 14px;
   flex-shrink: 0;
@@ -400,7 +401,6 @@
   font-family: var(--font-mono);
   color: #24312F;
   margin-top: 2px;
-  opacity: 0.8;
 }
 
 /* --------------------------------------------------------------------------

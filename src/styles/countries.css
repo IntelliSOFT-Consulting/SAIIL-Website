@@ -2,6 +2,11 @@
    Countries & Partners Styles
    ========================================================================== */
 
+.countries-page h1,
+.countries-page h2 {
+  font-weight: 400;
+}
+
 /* --------------------------------------------------------------------------
    Geographic Reach Section
    -------------------------------------------------------------------------- */
@@ -198,7 +203,7 @@
   font-size: 16px;
   color: rgba(255, 255, 255, 0.65);
   margin-bottom: 32px;
-  line-height: 1.7;
+  line-height: 1.5;
 }
 
 .countries-cta-btn {

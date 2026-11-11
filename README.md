@@ -84,7 +84,6 @@ SAIIL-Website/
 │   │   ├── Contact.tsx          # Contact enquiry form & direct contacts
 │   │   ├── Countries.tsx        # Country implementations & programmes
 │   │   ├── Home.tsx             # Homepage & interactive overview
-│   │   ├── ResourceDetail.tsx   # Detailed publication view
 │   │   ├── Resources.tsx        # Technical resources & guides catalog
 │   │   ├── TestBed.tsx          # Conformance testing overview
 │   │   ├── TestBedAccess.tsx    # Test Bed sandbox access request
